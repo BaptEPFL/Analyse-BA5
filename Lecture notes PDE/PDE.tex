@@ -1,0 +1,100 @@
+\documentclass[a4paper,10pt,preprint,aps,tightenlines,showpacs,superscriptaddress]{revtex4}	%Rajouter a4paper,12pt suites à relecture des instructions
+\usepackage[top=2cm, bottom=2cm, left=1cm, right=1cm]{geometry}	% new package
+\usepackage[dvips]{graphicx}
+\usepackage{dcolumn}
+\usepackage{epsfig}
+\usepackage{color}
+\usepackage{bm}
+\usepackage{gensymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{appendix}
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{fancyhdr}
+\usepackage{amsfonts}
+\usepackage{comment}
+
+\def\bra#1{\mathinner{\langle{#1}|}}
+\def\ket#1{\mathinner{|{#1}\rangle}}
+\def\braket#1{\mathinner{\langle{#1}\rangle}}
+
+\graphicspath{{tpillustrations/}}
+
+\def\slash#1{\not\!#1}
+\def\slashb#1{\not\!\!#1}
+\def\delsla{\not\!\partial}
+
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\green}[1]{\textcolor{green}{#1}}
+\newcommand{\magenta}[1]{\textcolor{magenta}{#1}}
+
+\newcommand{\sla}[1]{\not\! #1}
+\def\ohalf{{\textstyle{1\over 2}}}
+\def\half{{\textstyle{1\over 2}}}
+\def\vqhalf{{\textstyle{\vec{Q}\over 2}}}
+\def\qhalf{{\textstyle{Q\over 2}}}
+\def\osix{{\textstyle{1\over 6}}}
+\def\vqsix{{\textstyle{\vec{Q}\over 6}}}
+\def\thalf{{\textstyle{3\over 2}}}
+\def\fourth{{\textstyle{1\over 4}}}
+\def\tfor{{\textstyle{3\over 4}}}
+
+\newcommand{\inp}[2]{\langle{#1}|{#2}\rangle}
+\newcommand{\vev}[2]{\langle{#1}\rangle}
+\newcommand{\slas}[1]{\not\!{#1}}
+\def\ohalf{{\textstyle{1\over 2}}}
+\def\thalf{{\textstyle{3\over 2}}}
+\def\fhalf{{\textstyle{5\over 2}}}
+\def\shalf{{\textstyle{7\over 2}}}
+\def\nhalf{{\textstyle{9\over 2}}}
+
+
+\newcommand\Tr{\,{\rm Tr}\,}
+\newcommand\re{\Re\mbox{e}}
+\newcommand\im{\Im\mbox{m}}
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+
+\pagestyle{fancy}
+\lhead{\scriptsize{ÉCOLE POLYTECHNIQUE FÉDÉRALE DE LAUSANNE\\
+3ème année de Physique\\
+Baptiste CLAUDON}}
+\rhead{\empty}
+\renewcommand{\headrulewidth}{0pt}
+
+\theoremstyle{definition}
+\newtheorem{Def}{Definition}
+\newcommand{\begdef}{\begin{Def}}
+%\newcommand{\enddef}{\end{Def}}
+\newtheorem{Prop}{Proposition}
+\newcommand{\begpro}{\begin{Prop}}
+%\newcommand{\endpro}{\end{Prop}}
+\newtheorem{The}{Theorem}
+\newcommand{\begthe}{\begin{The}}
+%\newcommand{\endthe}{\end{The}}
+\newtheorem*{Pre}{Proof}
+\newtheorem{Ex}{Example}
+\newtheorem{Post}{Postulat}
+
+\begin{document}
+
+\begin{titlepage}
+   \vspace*{\stretch{1.0}}
+   \begin{center}
+      \Huge\textbf{Introduction to\\Partial Differential Equations}\\
+      %\Large{Introduction aux Ondes\\ et à la Mécanique Quantique}\\ 
+      \text{ }\newline
+      \large{Baptiste Claudon}\\
+      \today
+   \end{center}
+   \vspace*{\stretch{2.0}}
+\end{titlepage}
+
+\tableofcontents\newpage
+\newpage
+\input{lecture0}
+
+\end{document}
+

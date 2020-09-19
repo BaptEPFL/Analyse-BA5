@@ -1,0 +1,6 @@
+\babel@toc {english}{}
+\tocdepth@munge 
+\contentsline {section}{\numberline {}Contents}{2}{}
+\tocdepth@restore 
+\contentsline {part}{I\hspace {1em}Espaces Fonctionnels}{3}{}
+\contentsline {section}{\numberline {I}Le th\IeC {\'e}or\IeC {\`e}me de Stone-Weierstrass}{3}{}

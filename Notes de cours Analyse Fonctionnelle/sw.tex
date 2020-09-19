@@ -1,0 +1,80 @@
+\part{Espaces Fonctionnels}
+\section{Le théorème de Stone-Weierstrass}
+\begthe\textbf{Théorème de Diniz}
+Soit $(f_n)$ une suite de fonctions réelles et continues définies sur un compact $K\subset\mathbb R^n$ et convergent simplement et de manière monotone vers $f\in C(K,\mathbb R)$. Alors cette suite converge uniformément vers $f$.
+\end{The}
+\begpre
+Choisir, sans perte de généralité que $(f_n)$ est décroissante et converge simplement vers $0$. Soit $\epsilon>0$. Poser pour $n\in\mathbb N$ : 
+\beq
+V_n=\{x\in K:f_n(x)\leq\epsilon\}
+\eeq
+Par continuité des fonctions de la suite, tous ces ensembles sont des ouverts. Puisque la suite tend vers $0$, on a : 
+\beq
+K=\bigcup_{n\in\mathbb N}V_n=K
+\eeq
+$K$ étant compact, il existe un nombre $F\in\mathbb N$ tel que
+\beq
+K=\bigcup_{n=0}^FV_n=K
+\eeq
+Puisque la suite est monotone décroissante, on a que $m<n$ implique $V_m\subseteq V_n$, donc $V_F=K$.
+\qed
+\end{Pre}
+
+\begdef
+Soit $F$ une famille de fonctions définies sur un ensemble $X\subset\mathbb R^n$. On dit que $F$ sépare $X$ si :
+\beq
+\forall x,y\in X, x\neq y,\exists f\in F:f(x)\neq f(y)
+\eeq
+\end{Def}
+\begdef
+On dit que $F$ ne s'annule pas sur $X$ si :
+\beq
+\forall x\in X\exists f\in F:f(x)\neq0
+\eeq
+\end{Def}
+\begdef
+Si $B$ est un sous-ensemble d'une $\mathbb K$-algèbre $A$, alors la $\mathbb K$-algèbre engendrée par $B$, $\mathcal A_\mathbb K(B)$ est la plus petite $\mathbb K$-algèbre contenant $B$.
+\end{Def}
+\begthe\textbf{Théorème de Stone-Weierstrass} Soit $X\subset\mathbb R^n$ un ensemble compact et soit $F\subseteq C(X,\mathbb R)$ une famille de fonctions qui sépare $X$ et qui ne s'annule pas sur $X$. Alors l'algèbre réelle $\mathcal A_\mathbb K(F)$ engendrée par $F$ est uniformément dense dans $C(X,\mathbb R)$ : 
+\beq
+\overline{\mathcal A_\mathbb K(F)}^{||\cdot||_\infty}=C(X,\mathbb R)
+\eeq
+\label{sw}
+\end{The}
+La preuve est laissée en exercice.
+\begcor
+Soit $X\subset\mathbb R^n$ un ensemble compact et $F\subseteq C(X,\mathbb C)$ une famille de fonction qui sépare $X$, invariante sous conjugaison complexe et qui ne s'annule pas sur $X$. Alors l'algèbre complexe $\mathcal A_\mathbb C(F)$ engendrée par $F$ est uniformément dense dans $C(X,\mathbb C)$.
+\end{Cor}
+\begpre
+On a $F=F^*$ car : 
+\beq F^*\subseteq F=(F^*)^*\subseteq F^*\eeq Comme $F$ sépare $X$ et ne s'annule pas sur $X$, $G=(F+F^*)\cup i(F-F^*)$ ne s'annule pas sur $X$ non plus et sépare aussi $X$. Or $F\subseteq C(X,\mathbb R)$ et par le théorème de Stone-Weierstrass \ref{sw}, $C(X,\mathbb R)=\overline{\mathcal A_\mathbb R(G)}$. Comme $C(X,\mathbb C)=C(X,\mathbb R)+iC(X,\mathbb R)$ et que $\overline{\mathcal A_\mathbb R(G)},i\overline{\mathcal A_\mathbb R(G)}\subset \overline{\mathcal A_\mathbb C(G)}$, on a que $C(X,\mathbb C)=\overline{\mathcal A_\mathbb C(G)}$. Or : $\mathcal A_\mathbb C(G)=\mathcal A_\mathbb C(F)$.
+\qed
+\label{cor1}
+\end{Pre}
+
+\begcor
+Soit $X\subset\mathbb R$ un ensemble compact. L'ensemble $\mathbb C[ X]$ est uniformément dense dans $C(X,\mathbb C)$.
+\end{Cor}
+\begpro
+$\mathbb C[ X]=\mathcal A_\mathbb C(\{1,id_X\})
+$ vérifie les hypothèses du corollaire \ref{cor1}.
+\qed
+\end{Prop}
+
+\begcor
+Soit $I=[a,b]$ un intervalle fermé de $\mathbb R$. L'algèbre engendrée sur les complexes par $F$ défini comme : 
+\beq
+F={e^{2\pi ni\frac{x-a}{x-b}},x\in I, n\in\mathbb N}
+\eeq
+est uniformément dense dans $V=\{f:f\in C([a,b],\mathbb C),f(a)=f(b)\}$. 
+\end{Cor}
+\begpro
+La fonction $\varphi$ définie par :
+\beq
+\varphi : [a,b]\to\partial B_1{0}, x\mapsto e^{2\pi ni\frac{x-a}{x-b}}
+\eeq
+induit un homéomorphisme isométrique $\Phi:C(\partial B_1(0),\mathbb C)\to V, f\mapsto f\circ\varphi$. Or, $C(\partial B_1(0),\mathbb C)=overline{\mathcal A_\mathbb C(\{1,z\mapsto z,z\mapsto z^*\})}$ puisque $\{1,z\mapsto z,z\mapsto z^*\}$ satisfait les hypothèses du corollaire \ref{cor1} et $F=\Phi|_{\mathcal A_\mathbb C(\{1,z\mapsto z,z\mapsto z^*\})}$.
+\qed
+\end{Prop}
+
+
