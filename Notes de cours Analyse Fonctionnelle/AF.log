@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.9.8)  19 SEP 2020 22:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.9.8)  21 SEP 2020 00:17
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -299,25 +299,26 @@ Excluding comment 'comment')
 \c@Ex=\count117
 \c@Post=\count118
 \c@Cor=\count119
+\c@Lem=\count120
  (./AF.aux)
 \openout1 = `AF.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 84.
-LaTeX Font Info:    ... okay on input line 84.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 84.
-LaTeX Font Info:    ... okay on input line 84.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 84.
-LaTeX Font Info:    ... okay on input line 84.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 84.
-LaTeX Font Info:    ... okay on input line 84.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 84.
-LaTeX Font Info:    ... okay on input line 84.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 84.
-LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 85.
+LaTeX Font Info:    ... okay on input line 85.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 85.
+LaTeX Font Info:    ... okay on input line 85.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 85.
+LaTeX Font Info:    ... okay on input line 85.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 85.
+LaTeX Font Info:    ... okay on input line 85.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 85.
+LaTeX Font Info:    ... okay on input line 85.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 85.
+LaTeX Font Info:    ... okay on input line 85.
 Class revtex4 Info: Unrecognized array package. Please update this document cla
-ss! (Proceeding with fingers crossed.) on input line 84.
-Class revtex4 Info: cite was not loaded (OK!) on input line 84.
-Class revtex4 Info: multicol was not loaded (OK!) on input line 84.
+ss! (Proceeding with fingers crossed.) on input line 85.
+Class revtex4 Info: cite was not loaded (OK!) on input line 85.
+Class revtex4 Info: multicol was not loaded (OK!) on input line 85.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -355,16 +356,16 @@ Class revtex4 Info: multicol was not loaded (OK!) on input line 84.
 
 (/usr/local/texlive/2019/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count120
+\scratchcounter=\count121
 \scratchdimen=\dimen126
 \scratchbox=\box39
-\nofMPsegments=\count121
-\nofMParguments=\count122
+\nofMPsegments=\count122
+\nofMParguments=\count123
 \everyMPshowfont=\toks30
-\MPscratchCnt=\count123
+\MPscratchCnt=\count124
 \MPscratchDim=\dimen127
-\MPnumerator=\count124
-\makeMPintoPDFobject=\count125
+\MPnumerator=\count125
+\makeMPintoPDFobject=\count126
 \everyMPtoPDFconversion=\toks31
 ) (/usr/local/texlive/2019/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
@@ -413,15 +414,15 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-LaTeX Info: Redefining \celsius on input line 84.
-Package gensymb Info: Faking symbols for \degree and \celsius on input line 84.
+LaTeX Info: Redefining \celsius on input line 85.
+Package gensymb Info: Faking symbols for \degree and \celsius on input line 85.
 
 
 
 Package gensymb Warning: Not defining \perthousand.
 
-LaTeX Info: Redefining \ohm on input line 84.
-Package gensymb Info: Using \Omega for \ohm on input line 84.
+LaTeX Info: Redefining \ohm on input line 85.
+Package gensymb Info: Using \Omega for \ohm on input line 85.
 
 Package gensymb Warning: Not defining \micro.
 
@@ -429,7 +430,16 @@ Package gensymb Warning: Not defining \micro.
 Non-PDF special ignored!
 <special> papersize=597.50787pt,845.04684pt
 {/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-(./AF.toc)
+(./AF.toc
+LaTeX Font Info:    Try loading font information for U+msa on input line 7.
+ (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 7.
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+))
 \tf@toc=\write4
 \openout4 = `AF.toc'.
 
@@ -440,16 +450,7 @@ Make it at least 25.50346pt.
 We now make it that large for the rest of the document.
 This may cause the page layout to be inconsistent, however.
 
-[2] (./sw.tex
-LaTeX Font Info:    Try loading font information for U+msa on input line 4.
- (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Try loading font information for U+msb on input line 4.
-
-(/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
+[2] (./espaces_fonctionnels.tex
 Underfull \hbox (badness 4543) in paragraph at lines 75--78
 \T1/cmr/m/n/10 induit un homéo-mor-phisme isométrique $\OT1/cmr/m/n/10 ^^H : \O
 ML/cmm/m/it/10 C\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 @B[]\OT1/cmr/m/n/10 (0)\OML/c
@@ -468,41 +469,44 @@ sy/m/n/10 7! \OML/cmm/m/it/10 z[]\OMS/cmsy/m/n/10 g$ \T1/cmr/m/n/10 sat-is-fait
  les hy-pothèses du corol-laire I[] et $\OML/cmm/m/it/10 F \OT1/cmr/m/n/10 =
  []
 
-) [3] (./AF.aux) ) 
+[3]) (./mesures_integrales.tex [4]) [5] (./AF.aux) ) 
 Here is how much of TeX's memory you used:
- 5617 strings out of 492616
- 73325 string characters out of 6129482
- 179995 words of memory out of 5000000
- 9407 multiletter control sequences out of 15000+600000
- 18123 words of font info for 44 fonts, out of 8000000 for 9000
+ 5663 strings out of 492616
+ 73829 string characters out of 6129482
+ 181054 words of memory out of 5000000
+ 9436 multiletter control sequences out of 15000+600000
+ 23837 words of font info for 63 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,11n,43p,639b,254s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/cm-super/
-cm-super-t1.enc}</usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmex10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmmi10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmmi5.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmmi7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-r10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7
-.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.
-pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pf
-b></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
-</usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.
-pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/symbols/msb
-m5.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/symbols/
-msbm7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/cm-super/sfbx0
-900.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/cm-super/sfbx100
-0.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/cm-super/sfbx1200.
-pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pf
-b></usr/local/texlive/2019/texmf-dist/fonts/type1/public/cm-super/sfbx2074.pfb>
-</usr/local/texlive/2019/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb></
-usr/local/texlive/2019/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb></us
-r/local/texlive/2019/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/
-local/texlive/2019/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on AF.pdf (3 pages, 235843 bytes).
+ 41i,12n,43p,657b,325s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2019/te
+xmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/local/texlive/2019/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2019/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2019/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2019/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2019/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2019/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2019/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2019/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2019/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2019/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/p
+ublic/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2019/texmf-dist/fonts/typ
+e1/public/amsfonts/symbols/msbm5.pfb></usr/local/texlive/2019/texmf-dist/fonts/
+type1/public/amsfonts/symbols/msbm7.pfb></usr/local/texlive/2019/texmf-dist/fon
+ts/type1/public/cm-super/sfbx0900.pfb></usr/local/texlive/2019/texmf-dist/fonts
+/type1/public/cm-super/sfbx1000.pfb></usr/local/texlive/2019/texmf-dist/fonts/t
+ype1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2019/texmf-dist/fonts/typ
+e1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1
+/public/cm-super/sfbx2074.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/p
+ublic/cm-super/sfbx2488.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/pub
+lic/cm-super/sfrm0700.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/publi
+c/cm-super/sfrm1000.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/
+cm-super/sfrm1200.pfb>
+Output written on AF.pdf (5 pages, 278521 bytes).
 PDF statistics:
- 99 PDF objects out of 1000 (max. 8388607)
- 72 compressed objects within 1 object stream
+ 113 PDF objects out of 1000 (max. 8388607)
+ 82 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -4,3 +4,6 @@
 \tocdepth@restore 
 \contentsline {part}{I\hspace {1em}Espaces Fonctionnels}{3}{}
 \contentsline {section}{\numberline {I}Le th\IeC {\'e}or\IeC {\`e}me de Stone-Weierstrass}{3}{}
+\contentsline {section}{\numberline {II}Compl\IeC {\'e}tion des espaces $L^p$}{4}{}
+\contentsline {part}{II\hspace {1em}Mesures et int\IeC {\'e}grales}{4}{}
+\contentsline {section}{\numberline {III}S\IeC {\'e}paration et partition}{4}{}

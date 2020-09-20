@@ -77,4 +77,37 @@ induit un homéomorphisme isométrique $\Phi:C(\partial B_1(0),\mathbb C)\to V, 
 \qed
 \end{Prop}
 
+\section{Complétion des espaces $L^p$}
+\begdef
+Une mesure $\mu$ définie sur une $\sigma$-algèbre $\Sigma\subseteq\mathcal P(\mathbb R^n)$ borélienne est dite intérieurement régulière si :
+\beq
+\forall E\in\Sigma, \mu(E)=\sup\{\mu(K):K \text{ compact et } K\subset E\}
+\eeq
+Elle est dite extérieurement-régulière si
+\beq
+\forall E\in\Sigma, \mu(E)=\inf\{\mu(V):V \text{ ouvert et } V\subset E\}
+\eeq
+Elle est enfin régulière si elle est simultanément extérieurement et intérieurement régulière, et localement finie si :
+\beq
+\forall x\in\mathbb R^n,\exists \text{ un ouvert }U\in\Sigma : \mu(U)<\infty
+\eeq
+\end{Def}
+
+\begin{The}
+Soit $\mu$ une mesure régulière et localement finie, $f\in L^p(\mathbb R^n,\mu)$ pour $1\leq p<\infty$ et $\epsilon>0$. Alors :
+\beq
+\exists \varphi\in C_c(\mathbb R^n):||f-\varphi||_p<\epsilon
+\eeq
+\end{The}
+
+Preuve laissée en exercice.
+
+\begthe
+Si $\mu$ est une mesure régulière et localement finie, l'espace de Hilbert $L^2(\mathbb R^n,\mu)$ est séparable.
+\end{The}
+
+\begpre
+Soit $f\in C_c(\mathbb R^n)$. Des fonctions qui sont des combinaisons linéaires du type $\sum_{k=1}^m\alpha_k\chi_{E_k}$ pour $E_k=\times_{j=1}^n ]a_j,b_j]$ approchent $f$ uniformément dans $C_c(\mathbb R^n)$. Par conséquent, pour une mesure régulière et localement finie, les fonctions de ce type approchent $f$ dans $L^2(\mathbb R^n,\mu)$. On pourrait donc choisir les $\alpha_k,a_k,b_k$ rationnels pour approcher $f$ par une famille dénombrable.
+\qed
+\end{Pre}
 

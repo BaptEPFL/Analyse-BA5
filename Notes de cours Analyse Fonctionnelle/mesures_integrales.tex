@@ -1,0 +1,61 @@
+\part{Mesures et intégrales}
+\section{Séparation et partition}
+Pour $A\subseteq\mathbb R^n$ et $x\in\mathbb R^n$, poser $d:\mathbb R^n\times \mathcal P(\mathbb R^n)\to\mathbb R^+$ :
+\beq
+(x,A)\mapsto\inf\{|x-y|:y\in A\}
+\eeq
+\begthe
+Soit $A\subseteq\mathbb R^n$. Alors la fonction $d_A:\mathbb R^n\to\mathbb R^+$ :
+\beq x\mapsto d(x,A)\eeq
+est continue.
+\end{The}
+Preuve laissée en exercice.
+\begdef
+Un ensemble de $\mathbb R^n$ est dit relativement compact si sa fermeture est compact.
+\end{Def}
+
+\begin{Lem}
+Soit un compact $K\subset\mathbb R^n$. Il existe alors un ouvert $U$ relativement compact tel que $K\subset U$.\label{rc}
+\end{Lem}
+\begpre
+Si $K=\emptyset$, prendre $U=B_1(x), x\in\mathbb R^n$. Sinon, considérer la famille d'ouverts $\{B_1(x)\}_{x\in K}$ qui recouvre $K$. Extraire une sous-famille finie $F\subset K$ qui recouvre $K$. L'ouvert :
+\beq
+U=\bigcup_{x\in F}B_1(x)
+\eeq
+satisfait aux exigences du lemme.
+\qed\end{Pre}
+\begdef
+Soient $K\subset V\subseteq \mathbb R^n$, avec $K$ compact et $V$ ouvert. On dit qu'une fonction $f\in C_c(\mathbb R^n,[0,1])$ sépare $K$ de $\mathbb R^n\backslash V$ et note $K\prec f\prec V$, si $f^{-1}\{1\}$ est un voisinage de $K$ et si $\text{supp}(f)\subset V$.\end{Def}
+
+\begin{Lem}\textbf{Lemme d'Urysohn}
+Soient $K\subset V\subseteq\mathbb R^n$, avec $K$ compact et $V$ ouvert. Il existe alors une fonction $f$ telle que $K\prec f\prec V$.\label{ury}
+\end{Lem}
+\begpre
+Par le lemme \ref{rc}, il existe un ouvert $U$ contenant $K$ relativement compact. Remplaçant si nécessaire $V$ par $V\cap U$, on peut supposer que $V$ est relativement compact. La fonction :
+\beq g(x)=\frac{d(x,\mathbb R^n\backslash V)}{d(x,\mathbb R^n\backslash V)+d(x,K)}\eeq est manifestement définie pour tout $x\in \mathbb R^n$ et continue (exercice). De plus, $g|_K=1$ et $g|_{\mathbb R^n\backslash V}=0$. Soient alors les ouverts $W=g^{-1}]2/3,1]$ et $U=g^{-1}]1/3,1]$. Clairement, $K\subset W\subset \overline{U}\subset V$ et la fonction :
+\beq
+f(x)=\frac{d(x,\mathbb R^n\backslash U)}{d(x,\mathbb R^n\backslash U)+d(x,W)}
+\eeq
+satisfait aux critères du lemme.
+\qed
+\end{Pre}
+
+\begdef
+Soit $K$ un compact de $\mathbb R^n$ et $\{V_n\}_{1\leq n\leq m}$ une collection finie d'ensembles ouverts qui recouvrent $K$. Une famille de $m$ fonctions $f_n\prec V_n$ telles que :
+\beq
+\sum_{n=1}^mf_n(x)=1, \forall x\in K
+\eeq
+est appelée une partition de $K$ subordonnée au recouvrement $\{V_n\}_{1\leq n\leq m}$.
+\end{Def}
+
+\begin{Cor}
+Soit $K\subset \mathbb R^n$ compact et $\{V_n\}_{1\leq n\leq m}$ une collection finie d'ensembles ouverts qui recouvrent $K$. Il existe alors une partition de $K$ subordonnée à $\{V_n\}_{1\leq n\leq m}$.
+\end{Cor}
+\begpre
+Soit $x\in K$. Il existe $V_{n_x}$ du recouvrement tel que $x\in V_n$. Par le lemme d'Urysohn \ref{ury}, il existe une fonction $g_x$ telle que $\{x\}\prec g_x\prec V_{n_x}$. L'ensemble $K_x=g_x^{-1}\{1\}$ est alors un voisinage compact de $\{x\}$. Comme $K$ est compact et puisque $\{K_x\}_{x\in K}$ recouvre $K$, il existe une sous-collection finie $\{K_{x_j}\}_{j=1,...,p}$ qui recouvre $K$. Pour chaque $V_n$ du recouvrement initiale, poser :
+\beq C_n=\bigcup_{K_{x_j}\subset V_n, 1\leq i\leq p}K_{x_j}\eeq Tous les $C_n$ sont compacts et leur collection recouvre $K$. De plus, $C_n\subset V_n$, $n=1,...,m$. Une nouvelle application du lemme d'Urysohn livre alors $m$ fonctions $h_n$ telles que $C_n\prec h_n\prec V_n$. Poser alors $f_1=h_1$ et $f_n=h_n\prod_{k=1}^{n-1}(1-h_k)$, pour $n\geq 2$. Clairement, $f_n\prec V_n$ pour $n=1,...,m$ et :
+\beq
+\sum_{n=1}^mf_n=1-\prod_{n=1}^m(1-h_n)
+\eeq
+De plus, si $x\in K$, $x\in C_n$ pour au moins un $n$, de sorte que $h_n(x)=1$, c'est-à-dire la propriété espérée.
+\qed\end{Pre}
