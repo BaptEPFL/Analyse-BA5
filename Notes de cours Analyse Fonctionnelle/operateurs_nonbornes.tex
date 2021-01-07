@@ -1,0 +1,422 @@
+\part{Opérateurs Non-bornés}
+\section{Notions fondamentales des opérateurs non-bornés}
+\begin{Def}
+Soit $(D(A),A)$ un opérateur. Le graphe $G(A)$ est défini par
+\beq
+G(A)=\{(x,y)\in\mathcal H\otimes\mathcal H:x\in D(A), y=Ax\}
+\eeq
+\end{Def}
+\begin{Def} Si la fermeture du graphe d'un opérateur est le graphe d'un opérateur, on dit que cet opérateur est fermable.
+\end{Def}
+\begin{Def} L'opérateur $(D(B),B)$ est une extension de $(D(A),A)$ si et seulement si $G(A)\subset G(B)$. Noter $A\subset B$.
+\end{Def}
+
+\begin{Def}
+Soient $(D(A_1),A_1)$ et $(D(A_2),A_2)$ deux opérateurs. Alors $D(A_1+A_2)=D(A_1)\cap D(A_2)$ et $D(A_2A_1)=\{x\in D(A_1):A_1x\in D(A_2)\}$ et on définit sur ces ensembles :
+\beq
+(A_1+A_2)x=A_1x+A_2x\hspace{0.5cm}(A_2A_1)x=A_2(A_1 x)
+\eeq
+\end{Def}
+
+\begin{Def}
+Soit $(D(A),A)$ un opérateur avec $D(A)$ dense dans $\mathcal H$. Le domaine de l'adjoint est défini par $D(A^*)$ est défini par :
+\beq
+D(A^*)=\{y\in\mathcal H:\exists!z_y\in\mathcal H:\forall x\in D(A), \langle y,Ax\rangle=\langle z_y,x\rangle\}
+\eeq
+Définir l'action de l'adjoint par $y\mapsto z_y$. 
+\end{Def}
+\begin{Def} Un opérateur densément défini est dit auto-adjoint si son graphe est égal à celui de son opérateur.
+\end{Def}
+\begin{Def} Un opérateur $A$ densément défini est dit normal si son domaine de définition est égal à celui de son adjoint et si pour chaque élément $x\in D(A)$, $||A^*x||=||Ax||$. 
+\end{Def}
+
+\begin{The}
+Soit $(D(A),A)$ un opérateur sur $\mathcal H$. Alors :
+\beq
+G(A^*)=\left(G(-A)^{t}\right)^\perp
+\eeq Avec le produit scalaire sur $\mathcal H\otimes\mathcal H$ définit comme la somme des produits scalaires des premières composantes avec les premières et des deuxièmes avec les deuxièmes. En particulier, l'adjoint d'un opérateur est toujours fermé.
+\end{The}
+
+\begin{Pre}
+Soit $X=(x_1,x_2)\in \left (G(A)^t\right)^\perp$. De manière équivalente :
+\beq\begin{split}
+&\forall Y=(y_1,y_2)\in G(A)^{-t}: \langle x_1,y_2\rangle=\langle x_2,y_1\rangle\\
+\Leftrightarrow&\forall Y=(y_1,y_2)\in G(A)^{-t}: \langle x_1,Ay_1\rangle=\langle x_2,y_1\rangle\\
+\Leftrightarrow& x_2=A^*x_1
+\end{split}\eeq
+
+\qed\end{Pre}
+
+\section{Les théorèmes de Banach-Steinhaus et du graphe fermé}
+
+\begin{Lem}
+Soit $A\in\mathcal L(X,Y)$ pour deux espaces normés $X$ et $Y$. Pour tout $x\in X$ et $r>0$, on a :
+\beq
+\sup\{||Ax'||:x'\in B_r(x)\}\geq||A||r
+\eeq
+\label{lembs}\end{Lem}
+\begin{Pre}
+Pour $\xi\in X$, 
+\beq
+\max\{||A(x-\xi)||,||A(x+\xi)||\}\geq\frac12\left(||A(x-\xi)||+||A(x+\xi)||\right)\geq||A\xi||
+\eeq
+Conclure en passant au supremum pour $\xi\in B_r(0)$.
+\qed\end{Pre}
+
+\begin{Def}
+Une famille $\mathcal F\in\mathcal L(X,Y)$ est simplement bornée si pour tout $x\in X$, $\sup\{||Ax||:A\in\mathcal F\}<\infty$ ou uniformément bornée sur $\sup\{||A||\in\mathcal F\}<\infty$.
+\end{Def}
+
+\begin{The}\textbf{Théorème de Banach-Steinhaus}
+Soient $X$ un espace de Banach, $Y$ un espace normé et $\mathcal F\subseteq\mathcal L(X,Y)$ une famille simplement bornée, alors $\mathcal F$ est uniformément bornée.
+\label{bs}\end{The}
+
+\begin{Pre}
+Supposer que la famille ne soit pas uniformément bornée. On peut alors choisir une suite d'opérateur $(A_n)\subseteq F$ telle que $||A_n||\geq4^n$. Poser $x_0=0$ et $x_n\in B_{3^{-n}}(x_{n-1})$ et $||A_nx_n||\geq\frac23||A_n||3^{-n}$, qui existe par le lemme précédent \ref{lembs}. La suite $(x_n)$ étant de Cauchy, elle converge vers $x\in X$. De plus, $||x-x_n||\leq\frac{3^{-n}}2$. Mais, par construction des $x_n$ et l'inégalité triangulaire inverse, on trouve :
+\beq
+||A_nx||\geq\frac{3^{-n}}6||A_n||\geq\frac{4^n}{6\times3^n}
+\eeq 
+ce qui contredit la majoration simple.
+\qed\end{Pre}
+
+\begin{Def} Soit $\mathcal H$ un espace de Hilbert. On dit qu'un sous-ensemble $D$ est faiblement séquentiellement compact si pour toute suite $(x_n)$ dans $ D$, il existe $x\in D$ et une sous-suite $(y_m)\subseteq(x_n)$, telle que pour tout $v\in \mathcal H$ :
+\beq
+\lim_{n\to\infty}\langle y_n,v\rangle=\langle x,v\rangle 
+\eeq
+\end{Def}
+
+\begin{The}\textbf{Théorème de Bolzano-Weierstrass} Le disque unité $\overline {B_1(0)}$, dans un espace de Hilbert $\mathcal H$ séparable, est séquentiellement compact.
+\label{bolzano}\end{The}
+
+\begin{Pre}
+Soient $(x_n)\subset \overline{B_1(0)}$ et $(e_n)$ un système ortho-normé et complet de $\mathcal H$. Alors, pour tout $m\in\mathbb N$, la suite $(\langle x_n,e_m)_{n\in\mathbb N}$ est une suite bornée de $\mathbb C$. Pour $m=1$, on peut choisir une sous-suite $(x_{n_k})_{k\in\mathbb N}$ qui converge vers un élément de l'espace de Hilbert dénoté par $z_1$. Poser $y_1$, d'indice $N_1,$ la premier élément de la sous-suite tel que pour tous les $k\geq N_1$, $|\langle x_{n_k},e_1\rangle|<1$. Répéter le processus pour chaque $m$ de manière à avoir une distance plus petite que $1/2^{m-1}$. Par itération, on construit une sous-suite $(y_m)$ de $(x_n)$ et une suite $(z_n)\subset \mathbb C$ telles que :
+\beq
+\forall k\in\mathbb N:\lim_{m\to\infty}\langle y_m,e_k\rangle=z_k
+\eeq
+Pour tout $v\in\text{Vect}\left(e_i\right)$, on a alors $\lim_{m\to\infty}\langle y_m,v\rangle$ existe et :
+\beq
+\left|\lim_{m\to\infty}\langle y_m,v\rangle\right|\leq\limsup_{m\to\infty}|\langle y_m,v\rangle|\leq||v||
+\eeq
+L'application $\text{Vect}\left(e_i\right)\to\mathbb C$, $v\mapsto\lim_{m\to\infty}\langle y_m,v\rangle$ est alors une fonctionnelle linéaire bornée. Puisque $(e_i)$ est une famille dense de l'espace de Hilbert, on peut étendre l'opérateur à tout l'espace. Le théorème de Riesz-Fréchet permet alors de conclure.
+
+\qed\end{Pre}
+
+\begin{Lem}
+Soit $(D(T),T)$ un opérateur fermé et densément défini. Alors $D(T^*)$ est dense.
+\label{densitedomainead}\end{Lem}
+\begin{Lem} Soit $(D(T),T)$ un opérateur fermé sur un espace de Hilbert séparable $\mathcal H$ avec $D(T)=\mathcal H$. Alors $D(T^*)=\mathcal H$.
+\end{Lem}
+
+\begin{Pre}
+Comme $D(T)$ est dense, $T^*$ existe. Par le lemme \ref{densitedomainead}, $D(T^*)$ est dense. Soit $v\in\mathcal H$ et choisir une suite $(v_n)\subset D(T^*)$, bornée, telle que $\lim_{n\to\infty}v_n=v$.
+Pour $w\in\mathcal H$, on a $\langle v_n,Tw\rangle=\langle T^*v_n,w\rangle$ et 
+\beq
+\sup_{n\in \mathbb N}| \langle T^*v_n,w\rangle|\leq\sup_{n\in \mathbb N}||Tw||||v_n||<\infty
+\eeq
+Par le théorème de Banach-Steinhaus \ref{bs}, $\sup_{n\in\mathbb N}<\infty$. Par Bolzano-Weierstrass \ref{bolzano}, il existe une sous-suite $\left(T^*v_{\sigma(n)}\right)_{n\in\mathbb N}$ de $\left(T^*v_n\right)$ et un $y\in\mathcal H$, tels que
+\beq
+\forall x\in\mathcal H:\lim_{n\to\infty}\langle T^*v_{\sigma(n)},x\rangle=\langle y,x\rangle=\langle v,Tx\rangle
+\eeq
+\qed\end{Pre}
+
+\begin{The} \textbf{Théorème du graphe fermé} Soit $(D(T),T)$ un opérateur fermé sur un espace de Hilbert $\mathcal H$ séparable avec $D(T)=\mathcal H$. Alors $T$ est borné. \label{closedgraph}\end{The}
+\label{tgf}\begin{Pre}
+Supposer $T$ non-borné. Il existe une suite $(u_n)\subset B_1(0)$, telle que $\lim_{n\to\infty}||Tu_n||=\infty$. D'un autre côté, pour $x\in\mathcal H=D(T^*)$,
+\beq
+\sup_{n\in\mathbb N}|\langle Tu_n,x\rangle|=
+\sup_{n\in\mathbb N}|\langle u_n,T^*x\rangle|\leq\sup_{n\in\mathbb N}||u_n||||T^*x||=||T^*x||
+\eeq
+\qed\end{Pre}
+
+\section{Le coeur et l'adjoint essentiel}
+
+\begin{Def} Pour un opérateur $(D(T),T)$ fermé, définir l'ensemble résolvant $\rho(T)$ par :
+\beq
+\rho(T)=\{z\in\mathbb C:\text{ker}(T-z)={0}\text{ et }\mathcal H=\text{ran}(T-z)\}
+\eeq
+et le spectre $\sigma(T)=\mathbb C\backslash \rho(T)$. Pour $z\in\rho(T)$, $R(z,T)=(T-z)^{-1}$ est appelé la résolvante.
+\end{Def}
+
+\begin{Prop}
+Une définition équivalente de l'ensemble résolvant est la suivante :
+\beq
+\rho(T)=\{\lambda\in\mathbb C:\exists A\in\mathcal L(\mathcal H):A(T-\lambda)= 1_{D(T)}\text{ et }(T-\lambda)A= 1\}
+\eeq
+\end{Prop}
+
+\begin{Pre}
+Montrer que la résolvante est bornée. Puisque $(D(T),T)$ est fermé, le graphe de $T$ l'est. Sa transposée l'est donc aussi, tout comme $G(T-\lambda)$, pour $\lambda\in\rho(T)$, ou encore $G(T-\lambda)^t=G(R(\lambda,t))$. L'opérateur $R(\lambda,T)$ est donc fermé, défini sur tout l'espace de Hilbert et le théorème du graphe fermé \ref{tgf} implique alors que $R(\lambda,T)\in\mathcal L(\mathcal H)$. 
+\qed\end{Pre}
+
+\begin{Prop} Soit $(D(T),T)$ un opérateur fermé. Alors $z\in \rho(T)$ si et seulement si $\overline z\in\rho(T^*)$ et 
+\beq
+R(z,T)^*=R(\overline z,T^*)
+\eeq
+\end{Prop}
+
+\begin{Pre}
+Soit $z\in\mathbb C$. Pour que $(T-z)x$ soit bien défini, il faut et suffit que $Tx$ le soit, donc $x\in D(T)$. Donc $D(T-z)=D(T)$. Puis, pour chaque $x\in D(T)$, et $y\in\mathcal H$, dire que $x\mapsto \langle y,(T-z)x\rangle$ est continu revient à dire que $x\mapsto \langle y,Tx\rangle-\langle \overline zy,x\rangle$ est continu, c'est-à-dire $x\in D(T^*)$. Ainsi, $D(T-z)^*=D(T^*)$ et $(T-z)^*=T^*-\overline z$. Soit $z\in \rho(T)$. Cela implique donc que $R(z,T)\in\mathcal L(\mathcal H)$ avec 
+\beq
+(T-\lambda)R(z,T)=1_{\mathcal H}
+\eeq
+et 
+\beq
+R(z,T)(T-z)=1_{D(T)}
+\eeq
+Ainsi, $R(z,T)^*\in\mathcal L(\mathcal H)$ et 
+\beq\begin{split}
+&G(R(z,T)^*)={G(-R(z,T))^t}^\perp={{G(-(T-z))^\perp=G(-(T-z))^t}^t}^\perp\\&={{G(-(T-z))^t}^\perp}^t=G((T-z)^*)^t=G(T^*-\overline z)^t
+\end{split}\eeq
+Ceci montre donc que $R(z,T)^*\in\mathcal L(\mathcal H)$ est l'inverse borné de $T^*-\overline z$ et que par conséquence, $\overline z\in\rho(T^*)$, ainsi que $R(z,T)^*=R(\overline z,T^*)$. La réciproque est une conséquence de cet argument, puisque $T$ étant fermé, on a $T={T^*}^*$.
+\qed\end{Pre}
+
+\begin{Def} Un opérateur $(D(T),T)$ est dit symétrique si $T\subset T^*$ et $D(T)$ est dense.
+\end{Def}
+
+\begin{Lem}
+Un opérateur $(D(T),T)$ symétrique est fermable. De plus, ker$(T\pm i)=\{0\}$ et 
+\beq
+\overline{\text{Ran}(T\pm i)}=\text{Ran}(\overline T\pm i)
+\eeq
+où $\overline T={T^*}^*$ est la fermeture de $T$.
+\label{tpmi}\end{Lem}
+\begin{Pre}
+Comme l'adjoint d'un opérateur densément défini existe toujours et qu'il est fermé, on a pour un opérateur symétrique que $G(T)$ est contenu dans le graphe $G(T^*)$, qui lui est fermé. On a alors que $T$ est fermable et que $\overline{G(T)}={G(T)^\perp}^\perp={G(-T^*)^t}^\perp=G({T^*}^*)$. \\
+Puisque $T\subset T^*$, on a pour $x\in D(T)$, $\langle x,Tx\rangle=\langle T^*x,x\rangle=\langle Tx,T\rangle=\overline{\langle x,Tx\rangle}$. Ainsi
+\beq\begin{split}
+||(T\pm i)x||^2&=\langle Tx,Tx\rangle\mp i \langle x,Tx\rangle\pm i\langle Tx,x\rangle +\langle x,x\rangle\\
+&=||Tx||^2+||x||^2\geq||x||^2,||Tx||^2
+\end{split}\eeq
+Ceci implique que Ker$(T\pm i)=\{0\}$. De plus, ceci montre que $(y_n)=\left((T \pm i)x_n\right)$ est une suite de Cauchy dans l'image de $T\pm i$ si et seulement $(x_n)$ est de Cauchy dans $D(T)$ et $(Tx_n)$ est de Cauchy dans l'image de $T$, c'est-à-dire si et seulement si $(\lim x_n,\lim y_n)\in G(\overline T)$. Donc, $\overline {\text{Ran}(T\pm i)}=\text{Ran}(\overline T\pm i)$.
+\qed\end{Pre}
+
+\begin{The}\textbf{Théorème de von Neumann} Soit $(D(T),T)$ un opérateur symétrique et fermé sur un espace de Hilbert séparable $\mathcal (\mathcal H)$. Alors $T$ est auto-adjoint si et seulement si $i\in \rho(T)$. Dans un tel cas $\sigma(T)\subseteq\mathbb R$. \label{tvn}\end{The}
+
+\begin{Pre}
+Supposons d'abord que $\pm i\in \rho(T)$. Alors, $R(\pm i,T)\in \mathcal L(\mathcal H)$ existent et Ran$(T\pm i)=\mathcal H$. Pour $x\in D(T^*)$, il existe alors un $y\in D(T)$, tel que $(T^*\pm i)x=(T\pm i)y$. Puisque $T$ est symétrique, $T\subset T^*$. Mais par la proposition précédente, $\pm i\in \rho(T^*)$ aussi, et $x=y$. Ainsi, $D(T)=D(T^*)$ et $T=T^*$.\\
+Supposons maintenant que $T=T^*$. Alors, $T$ est à fortiori symétrique, $T=\overline T$ et par le lemme précédent \ref{tpmi}, Ker$(T\pm i)=\{0\}$ et l'image de $t\pm i$ est fermée. Si $x$ est orthogonal à l'image de $T\pm i$, alors $\forall y\in D(T)$ : $\langle x, (T\pm i)y\rangle =0$, de sorte que $D(T^*)=D(T)$ et $\langle (T\mp i)x, y\rangle =0$. Comme $D(T)$ est dense dans $\mathcal H$, ceci implique que $(T\mp i)x=0$, donc $x\in \text{Ker}(T\pm i)$, donc $x=0$. Ainsi, l'image de $T\pm i$ est l'espace de Hilbert entier. Comme $T\pm i$ sont des opérateurs fermés sur $D(T)$, on a que $(T\pm i)^{-1}$ sont fermés aussi et définis sur tout $\mathcal H$. Par le théorème du graphe fermé, $(T\pm i)^{-1}\in\mathcal L(\mathcal H)$ et $\pm i\in \rho(T)$.\\
+Supposons enfin que $T=T^*$ et que $z=a+ib$, $a\in\mathbb R$, $b\in\mathbb R\backslash{0}$. Alors $b^{-1}(T-a)$ est auto-adjoint aussi et $\pm i\in \rho(b^{-1}(T-a))$, d'où on conclut que $\pm ib\in\rho(T-a)$, où encore, que $a\pm ib\in \rho(T)$. Conclure que $\sigma(T)\subseteq \mathbb R$.
+\qed\end{Pre}
+
+\begin{Def}
+Un opérateur $(D(T),T)$ symétrique est dit essentiellement auto-adjoint si sa fermeture $\overline T={T^*}^*$ est auto-adjointe. Dans ce cas, $D(T)$ est un coeur pour ${T^*}^*$.
+\end{Def}
+
+\begin{Cor} Un opérateur $(D(T),T)$ symétrique est essentiellement auto-adjoint si et seulement si l'une des deux conditions suivantes est vérifiée :
+\begin{itemize}
+\item $\overline{\text{Ran}(T\pm i)}=\mathcal H$
+\item $\text{Ker}(T^*\pm i)=\{0\}$
+\end{itemize}
+\end{Cor}
+
+\begin{Pre} Commençons par noter que ces deux conditions sont équivalentes. En effet :
+\beq
+\overline{\text{Ran}(T\pm i)}=\mathcal H\Leftrightarrow \text{Ran}(T\pm i)^\perp=\{0\}
+\eeq
+Mais l'orthogonal de l'image d'un opérateur n'est rien d'autre que le noyau de son adjoint et $(T\pm i)^*=T^*\mp i$.\\
+Par le lemme précédent, $\overline{\text{Ran}(T\pm i)}=\text{Ran}(\overline T\pm i)$, donc $\overline{\text{Ran}(T\pm i)}=\mathcal H$ est équivalent à dire que $\overline T\pm i$ est une bijection entre $D(\overline T)$ et $\mathcal H$.\\
+Puisque $\overline T\pm i$ est fermé, $(\overline T\pm i)^{-1}$ l'est aussi et, d'après le théorème du graphe fermé \ref{tgf}, on a que $(\overline T\pm i)^{-1}\in\mathcal L(\mathcal H)$. On a alors $\pm i\in \rho(\overline T)$, ce qui, par le théorème de von Neumann \ref{tvn}, est équivalent à dire que $\overline T$ est auto-adjoint.
+\qed\end{Pre}
+
+\section{Décomposition spectrale d'opérateurs non-bornés}
+
+\begin{Prop}
+Pour un opérateur $A$ densément défini et fermé, on a la décomposition :
+\beq
+\mathcal H\bigoplus\mathcal H=G(A^*)\bigoplus G(-A)^{t}
+\eeq
+\label{decotri}\end{Prop}
+\begin{Pre} Clair puisque $G(A^*)$ est fermé, puisque qu'écrit comme le complément orthogonal d'un sous-espace fermé et convexe.
+\qed\end{Pre}
+
+\begin{Lem}
+Soient $(D(A),A)$ un opérateur densément définit et fermé, et $u,v\in\mathcal H$. Il existe alors un unique couple $(x,y)\in D(A)\times D(A^*)$ tel que $y-Ax=u$ et $x+A^*y=w$. De plus :
+\beq
+||u||^2+||w||^2=||x||^2+||y||^2+||Ax||^2+||A^*y||^2
+\eeq
+\label{identite}
+\end{Lem}
+
+\begin{Pre}
+Puisque $\mathcal H\bigoplus\mathcal H=G(A^*)\bigoplus G(A)^{-t}$, voir proposition \ref{decotri}, et que $(u,v)\in \mathcal H\bigoplus\mathcal H$, il existe une unique décomposition :
+\beq
+(u,v)=(y,A^*y)+(-Ax,x)
+\eeq
+avec $(x,y)\in D(A)\times D(A^*)$. Par le théorème de Pythagore :
+\beq
+||u||^2+||w||^2=||(y,A^*y)+(-Ax,x)||_{\mathcal H\bigoplus\mathcal H}^2=||y||^2+||A^*y||^2+||Ax||^2+||x||^2
+\eeq
+\qed\end{Pre}
+
+\begin{The} Soit $(D(A),A)$ un opérateur densément défini et fermé. Alors :
+\begin{enumerate}
+\item $(D(A^*A),1+A^*A)$ est un opérateur auto-adjoint
+\item $1+A^*A$ est une bijection entre $D(A^*A)$ et $\mathcal H$
+\item $(1+A^*A)^{-1}\in\mathcal L(\mathcal H)$ est auto-adjoint et $||(1+A^*A)^{-1}||\leq1$
+\item $D(A^*A)$ est un coeur pour $A$
+\end{enumerate}
+\end{The}
+
+\begin{Pre}
+Commençons par prouver que $1+A^*A$ est une bijection entre $D(A^*A$ et $\mathcal H$. En appliquant le lemme \ref{identite} aux cas $v=0$ et $w\in\mathcal H$, on trouve des couples $(x,y)\in D(A)\times D(A^*)$ tels que $0=y-Ax$ et $w=x+A^*y$. Ceci implique que pour tout $w\in\mathcal H$, il existe un unique $x\in D(A)$, tel que $Ax\in D(A^*)$ et $1+A^*A)x=w$. L'opérateur établit alors bien une bijection entre $D(A^*A$ et $\Hcal$. \\
+$(1+A^*A)^{-1}\in\mathcal L(\mathcal H)$ et $||(1+A^*A)^{-1}||\leq1$ suivent de $||w||^2=||x||^2+2||Ax||^2+||A^*Ax||^2\geq||x||^2$.\\
+Montrons maintenant que $(D(A^*A),1+A^*A)$ est auto-adjoint. Tout d'abord, cet opérateur est fermé car le graphe d'un opérateur borné est toujours fermé, que $G(B^{-1})=G(B)^t$ et que le graphe d'un opérateur est fermé si et seulement si le graphe transposé l'est. Remarquer que $D(A^*A)$, et donc $D(1+A^*A)$, est dense dans $\Hcal$. Soit $y\in D(A^*A)^\perp$ et montrons que $y=0$. Il doit exister un unique $x\in D(1+A^*A)$ tel que $y=x+A^*Ax$. Alors :
+\beq
+0=\vev{x,y}=\vev{x,x+A^*Ax}=||x||^2+||Ax||^2
+\eeq
+donc $x=0=Ax=y$. Soit désormais $y\in D(1+A^*A)$. Il existe alors un unique $z\in\Hcal$ tel que :
+\beq
+\vev{y,x+A^*Ax}=\vev{z,x}
+\eeq
+Mais $1+A^*A$ étant une bijection, il doit exister un unique $y'\in D(1+A^*A)$ tel que $z=y'+A^*Ay'$. Mais alors pour tout $x\in D(1+A^*A)$ :
+\beq
+\vev{y,x+A^*Ax}=\vev{z,x}=\vev{y',x+A^*Ax}
+\eeq
+de sorte que $y=y'$ et $z=y+A^*Ay$. Prenons maintenant $x,y\in\Hcal$ arbitraires. Par bijectivité et le fait que $1+A^*A$ est auto-adjoint sur $D(A^*A)$ :
+\beq\begin{split}
+\vev{y,(1+A^*A)^{-1}x}=\vev{(1+A^*A)^{-1}y,x}
+\end{split}\eeq
+Montrer enfin le dernier point. Supposer $(x,Ax)\in G(A)$ est orthogonal dans $\Hcal\bigoplus\Hcal$ au graphe de $A$ restreint à $D(A^*A)$ et montrons que $x=0$. Cela provient du fait que pour tout $y\in D(A^*A)$, on a que :
+\beq
+0=\vev{(x,Ax),(y,Ay)}=\vev{x,y}+\vev{x,(1+A^*A)y}
+\eeq
+\qed\end{Pre}
+
+\begin{The}
+Soit $(D(A),A)$ un opérateur normal. Alors
+\begin{enumerate}
+\item $x\in D(A^2)\implies (1+A^*A)^{-1/2}x\in D(A^2)$
+\item Pour $x\in D(A)$, $A(1+A^*A)^{-1}x=(1+A^*A)^{-1}Ax$ et $A^*(1+A^*A)^{-1}x=(1+A^*A)^{-1}A^*x$
+\item Pour $x\in D(A^2)$, $A(1+A^*A)^{-1/2}x=(1+A^*A)^{-1/2}Ax$ et $A^*(1+A^*A)^{-1/2}x=(1+A^*A)^{-1/2}A^*x$
+\item $(1+A^*A)^{-1/2}A$ et $(1+A^*A)^{-1/2}A^*$ sont bornés sur $D(A^2)$, de norme inférieure à 1, de sorte qu'il existe des extensions bornées uniques $T_A$ et $T_{A^*}$. De plus, $T_A^*=T_{A^*}$
+\item $1-T_{A^*}T_A=(1+A^*A)^{-1}$
+\end{enumerate}
+\label{avantder}\end{The}
+
+\begin{Pre}
+Commencer par la discussion suivante. On a $D(A^2)=D(A^*A)=D(AA^*)=D({A^*}^2)$. Par exemple :
+\beq\begin{split}
+x\in D(A^*A)&\Leftrightarrow \forall y\in D(A) : y\mapsto\vev{y,A^*Ax}\in\mathcal L(D(A),\mathbb C)\\
+&\Leftrightarrow \forall y\in D(A) : y\mapsto\vev{Ay,Ax}\in\mathcal L(D(A),\mathbb C)\\
+&\Leftrightarrow \forall y\in D(A) : y\mapsto \sum_{k=0}^3i^k\vev{A(y+i^kx),A(y+i^kx)}\in\mathcal L(D(A),\mathbb C)\\
+&\Leftrightarrow \forall y\in D(A) : y\mapsto \sum_{k=0}^3i^k||A(y+i^kx)||^2\in\mathcal L(D(A),\mathbb C)\\
+&\Leftrightarrow \forall y\in D(A) : y\mapsto \sum_{k=0}^3i^k||A^*(y+i^kx)||^2\in\mathcal L(D(A),\mathbb C)\\
+&\Leftrightarrow \forall y\in D(A) : y\mapsto\vev{A^*y,A^*x}\in\mathcal L(D(A),\mathbb C)\\
+&\Leftrightarrow A^*x\in D(A)\\
+&\Leftrightarrow x\in D(AA^*)
+\end{split}\eeq
+De plus, si $x\in D(A^2)$, alors :
+\beq
+\vev{x,A^*Ax}=\vev{Ax,Ax}=||Ax||^2=||A^*x||^2=\vev{Ax,Ax}=\vev{x,AA^*x}
+\eeq
+et en appliquant encore une fois l'identité de polarisation, on a que pour un tel opérateur normal $(D(A),A)$ :
+\beq
+\forall x\in D(A^*A)=D(AA^*) : AA^*x=A^*Ax
+\eeq
+Puisque $(1+A^*A)^{-1}$ est borné, on peut par le calcul fonctionnel sur les opérateurs bornés définir l'opérateur $(1+A^*A)^{-1/2}$. Celui-ci sera aussi borné, auto-adjoint et de norme inférieure à 1. Manifestement :
+\beq
+(1+A^*A)^{-1/2}(1+A^*A)^{-1/2}=(1+A^*A)^{-1}
+\eeq
+Prouvons désormais chaque point explicitement.
+\begin{enumerate}
+\item Si $x\in D(A^2)$, il doit exister $y\in\Hcal$ tel que $x=(1+A^*A)y$. Mais alors, par le calcul fonctionnel, on a $(1+A^*A)^{-1/2}x=(1+A^*A)^{-3/2}y=(1+A^*A)^{-1}(1+A^*A)^{-1/2}y\in D(A^2)$.
+\item Si $x\in D(A)$, il existe $y\in D(A^2)$ tel que $(1+A^*A)y=x$. Ceci montre que $A^*Ay=x-y\in D(A)$, d'où $y\in D(AA^*A)$, ou encore, $Ay\in D(AA^*)=D(A^*A)$. Ainsi, on a :
+\beq\begin{split}
+&A(1+A^*A)^{-1}x=Ay=(1+A^*A)^{-1}(1+A^*A)Ay=(1+A^*A)^{-1}(Ay+A^*AAy)\\
+&=(1+A^*A)^{-1}(Ay+AA^*Ay)=(1+A^*A)^{-1}A(1+A^*A)y=(1+A^*A)^{-1}Ax
+\end{split}\eeq 
+Le raisonnement pour l'autre égalité est analogue.
+\item Par définition du calcul fonctionnel, il doit exister une suite $(p_n)$ convergeant uniformément sur $\sigma(((1+A^*A)^{-1}))$ vers la fonction $x\mapsto \sqrt x$ de telle sorte que $||(1+A^*A)^{-1/2}-p_n((1+A^*A)^{-1})||\to0$. Pour $x,y\in D(A^2)$ : 
+\beq\begin{split}
+\vev{x,A(1+A^*A)^{-1/2}y}&=\vev{A^*x,(1+A^*A)^{-1/2}y}=\vev{A^*x,\lim_{n\to\infty} p_n((1+A^*A)^{-1})y} = \lim_{n\to\infty} \vev{A^*x,p_n((1+A^*A)^{-1})y}\\
+&=\lim_{n\to\infty} \vev{x,Ap_n((1+A^*A)^{-1})y}= \lim_{n\to\infty}\vev{x,p_n((1+A^*A)^{-1})Ay}\\
+& = \vev{x,\lim_{n\to\infty} p_n((A+A^*A)^{-1})Ay}=\vev{x,(1+A^*A)^{-1/2}Ay} 
+\end{split}\eeq
+Les éléments de matrices de $(1+A^*A)^{-1/2}A$ et de $A(1+A^*A)^{-1/2}$ étant égaux sur $D(A^2)$ qui est dense dans $\Hcal$, on peut conclure.
+\item Il existe des extensions bornées de $T_A$ et $T_{A^*}$ de $A(1+A^*A)^{-1/2}$ et $A^*(1+A^*A)^{-1/2}$ respectivement. De plus, $T^*_A =T_{A^*}$ et $||T_A||\leq 1$. Pour $x\in D(A^2)$, on a que :
+\beq\begin{split}
+&||(1+A^*A)^{-1/2}Ax||^2=\vev{Ax,(1+A^*A)^{-1/2}(1+A^*A)^{-1/2}Ax}=\vev{Ax,(1+A^*A)^{-1}Ax}=\vev{x,A^*(1+A^*A)^{-1}Ax}\\
+&=\vev{x,A^*A(1+A^*A)^{-1}x}\leq\vev{x,A^*A(1+A^*A)^{-1}x}+\vev{x,(1+A^*A)^{-1}x}=\vev{x,(1+A^*A)(1+A^*A)^{-1}}=||x||^2
+\end{split}\eeq L'opérateur $(1+A^*A)^{-1/2}A$ est donc bien borné sur $D(A^2)$, de norme inférieure à 1, et possède donc une unique extension sur tout $\Hcal$. Il en va de manière similaire pour $(1+A^*A)^{-1/2}A^*$. Finalement, pour $x,y\in D(A^2)$, on a :
+\beq
+\vev{x,A(1+A^*A)^{-1/2}y}=\vev{A^*x,(1+A^*A)^{-1/2}y}=\vev{(1+A^*A)^{-1/2}A^*x,y}
+\eeq
+ce qui montre bien que $(A(1+A^*A)^{-1/2})^*=(1+A^*A)^{-1/2}A^*$. L'extension de l'adjoint étant l'adjoint de l'extension, $T_A^*=T_{A^*}$.
+\item Prendre à nouveau $x,y\in D(A)$ :
+\beq
+\begin{split}
+\vev{x,(1-T_{A^*}T_A)y}&=\vev{x,y}-\vev{T_Ax,T_Ay}=\vev{x,y}-\vev{(1+A^*A)^{-1/2}Ax,(1+A^*A)^{-1/2}Ay}\\
+&=\vev{x,y}-\vev{Ax,(1+A^*A)^{-1/2}(1+A^*A)^{-1/2}Ay}=\vev{x,y}-\vev{Ax,(1+A^*A)^{-1}Ay}\\
+&=\vev{x,y}-\vev{x,A^*A(1+A^*A)^{-1}y}=\vev{x,(1+A^*A)(1+A^*A)^{-1}y}-\vev{x,A^*A(1+A^*A)^{-1}y}\\
+&=\vev{x,(1+A^*A)^{-1}y}
+\end{split}
+\eeq Ces deux opérateurs bornés ont donc les mêmes éléments de matrice sur un ensemble dense de $\Hcal$ et sont donc identiques.
+\end{enumerate}
+\qed\end{Pre}
+
+\begin{The}
+Soit $(D(A),A)$ un opérateur auto-adjoint. Alors, il existe une famille dénombrable $(\nu_n)_{n\in B}$ de mesures boreliennes, régulières et finies sur $\sigma(A)$ et un unique opérateur unitaire $U:\mathcal H\to\bigoplus_{n\in B}L^2(\sigma(A),\nu_n)$ tels que
+\begin{enumerate}
+\item $UD(A)=\{(f_n)_{n\in B}\in\bigoplus_{n\in B}L^2(\sigma(A),\nu_n):(xf_n(x))_{n\in B}\in\bigoplus_{n\in B}L^2(\sigma(A),\nu_n)\}$
+\item Sur $D(A)$, on a $A=U^{-1}M_xU$
+\end{enumerate}
+\end{The}
+
+\begin{Pre}
+Commençons par la discussion suivante. Si $(D(A),A)$ est auto-adjoint, il est à fortiori normal. Par le théorème précédent \ref{avantder}, $T_A$ est donc un opérateur auto-adjoint borné de norme inférieure à 1. Par conséquent son spectre est dans $[-1,1]$ et par le théorème de la décomposition spectrale pour opérateurs auto-adjoints bornés \ref{decompoborne}, il existe une famille de mesures régulières boréliennes $(\mu_n)_{n\in B}$ sur $\sigma(A)$ et avec $|B|\leq|\mathbb N|$ et un opérateur unitaire $V$ :
+\beq
+V:\Hcal\to\bigoplus_{n\in B}L^2(\sigma(A),\mu_n) :VT_AV^{-1}=M_x
+\eeq
+Par le théorème \ref{avantder}, on a alors que :
+\beq
+(1+A^*A)^{-1}=1-T_A^2=V^{-1}(1-M_x^2)V
+\eeq
+Clairement :
+\beq
+VD(A^2)=V\text{Ran}(1+A^*A)^{-1}=\text{Ran}(1-M_x^2)=\left\{((1-x^2)f_n(x))_{n\in B}:(f_n)_{n\in B}\in\bigoplus_{n\in B}L^2(\sigma(A),\mu_n)\right\}
+\eeq
+Manifestement, on a aussi $V(1+A^*A)^{-1/2}V^{-1}=M_{\sqrt{1-x^2}}$. Puis sur $VD(A^2)$, on a :
+\beq
+M_x=VA(1+A^2)^{-1/2}V^{-1}=V(1+A^2)^{-1/2}AV^{-1}=V(1+A^2)^{-1/2}V^{-1}VAV^{-1}=M_{\sqrt{1_x^2}}VAV^{-1}
+\eeq
+de sorte que sur $VD(A^2)$, $VAV^{-1}=M_{\frac{x}{\sqrt{1-x^2}}}$. Puisque $D(A^2)$ est un coeur pour $A$, $G(A)$ sera la fermeture dans $\Hcal\bigoplus\Hcal$ du graphe de $A$ restreint à $D(A^2)$. Puisque $V$ est unitaire, on aura que $(D(A),A)$ sera unitairement équivalent à la fermeture du graphe $M_{\frac{x}{\sqrt{1_x^2}}}$ restreint à $VD(A^2)$. De même, (D(A),A) est unitairement équivalent $(VD(A),M_{\frac{x}{\sqrt{1-x^2}}})$. Par le point $5$ du théorème \ref{avantder}, $(1+A^2)^{-1}=1-T_A^2$ est une injection, de sorte que par unitarité de $V$, l'opérateur $1-M_x^2$ est une bijection dans $\bigoplus_{n\in B}L^2(\sigma(A),\mu_n)$. Il en résulte que pour tout $n\in B$, $\mu_n\{-1,1\}=0$ car sinon le vecteur $\bigoplus_{k\in B} x_k$ avec $x_k=\delta_{nk}\chi_{\{-1,1\}}$ serait un vecteur non-nul avec $1-M_x^2\bigoplus_{k\in B} x_k=0$. Considérons alors $$\varphi:\mathbb R\to]-1,1[, x\mapsto y=\varphi(x)=\frac x{\sqrt{x^2+1}}$$
+Cette fonction est clairement une bijection continue avec inverse $\varphi^{-1}(y)=\frac y{\sqrt{1-x^2}}$. Si $\Sigma_n\subseteq\mathcal P(]-1,1[)$ est la $\sigma$-algèbre borélienne sur laquelle est définie $\mu_n$, alors :
+\beq
+\Sigma_n^{\varphi}=\{\varphi^{-1}\{E\}:E\in \Sigma_n\}
+\eeq
+est une $\sigma$-algèbre borélienne de $\mathcal P(\mathbb R)$. On définit alors une mesure $\nu _n$ :
+\beq
+\nu_n:F=\varphi^{-1}\{E\}\in \Sigma_n^\varphi\to\mathbb R_+, F\mapsto \mu_n(E)
+\eeq 
+Il est alors clair que $f$ est une fonction $\Sigma_n$-mesurable si et seulement si $f\circ\varphi$ est $\Sigma_n^\varphi$-mesurable et que $s$ est une fonction $\Sigma $-simple si et seulement si $s\circ\varphi$ est une fonction $\Sigma_n^\varphi$-simple. Par définition de $\nu_n$, il est alors clair que pour une fonction $\Sigma_n^\varphi$-simple :
+\beq
+\int_{\mathbb R}sd\nu_n=\int_{\sigma(A)}s\circ\varphi^{-1}d\mu_n
+\eeq
+et que par conséquent, la composition des fonctions par $\varphi$ induit un isomorphisme unitaire $W_n:L^2(\sigma(A),\mu_n)\to L^2(\mathbb R,\nu_n)$. $\varphi$ étant une bijection continue entre intervalles réels de sorte que des compacts de $\mathbb R$ sont envoyés sur des compacts de $]-1,1[$, et que la régularité de $\mu_n$ a alors comme conséquence la régularité de $\nu_n$. La composition par $\varphi$ montre alors aussi que
+\beq
+W_nM_{\frac{y}{\sqrt{1-y^2}}}=M_xW_n
+\eeq
+ sur l'ensemble $VD(A)_n$ et la composition par $\varphi$ nous donne que 
+ \beq
+ W_nVD(A)_n=\left\{\frac{f(x)}{\sqrt{1+x^2}}:f\in L^2(\mathbb R,\nu_n)\right\}
+ \eeq
+Mais alors, 
+\beq
+\begin{split}
+g\in W_nVD(A)_n\Leftrightarrow\int_{\mathbb R}\overline {g(x)}(1+x^2)g(x)d\nu_n<\infty\Leftrightarrow g,xg(x)\in L^2(\mathbb R,\nu_n)
+\end{split}
+\eeq 
+Ainsi :
+\beq
+W_nVD(A)_n=\left\{f\in L^2(\mathbb R,\nu_n):M_xf\in L^2(\mathbb R,\nu_n)\right\}
+\eeq
+En définissant $W=\bigoplus_{n\in B}W_n$ et $U = WV$, on la conclusion du théorème.
+\qed\end{Pre}
+
+
+
+
+
+
+
+

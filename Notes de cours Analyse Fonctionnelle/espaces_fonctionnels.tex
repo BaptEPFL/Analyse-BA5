@@ -1,16 +1,16 @@
 \part{Espaces Fonctionnels}
 \section{Le théorème de Stone-Weierstrass}
 \begthe\textbf{Théorème de Diniz}
-Soit $(f_n)$ une suite de fonctions réelles et continues définies sur un compact $K\subset\mathbb R^n$ et convergent simplement et de manière monotone vers $f\in C(K,\mathbb R)$. Alors cette suite converge uniformément vers $f$.
+Soit $(f_n)$ une suite de fonctions réelles et continues définies sur un compact $K\subset\mathbb R^n$ et convergent simplement et de manière monotone vers $f\in C(K,\mathbb R)$. Alors cette suite converge uniformément vers $f$.\label{diniz}
 \end{The}
 \begpre
 Choisir, sans perte de généralité que $(f_n)$ est décroissante et converge simplement vers $0$. Soit $\epsilon>0$. Poser pour $n\in\mathbb N$ : 
 \beq
-V_n=\{x\in K:f_n(x)\leq\epsilon\}
+V_n=\{x\in K:f_n(x)<\epsilon\}
 \eeq
 Par continuité des fonctions de la suite, tous ces ensembles sont des ouverts. Puisque la suite tend vers $0$, on a : 
 \beq
-K=\bigcup_{n\in\mathbb N}V_n=K
+K=\bigcup_{n\in\mathbb N}V_n
 \eeq
 $K$ étant compact, il existe un nombre $F\in\mathbb N$ tel que
 \beq
@@ -41,41 +41,106 @@ Si $B$ est un sous-ensemble d'une $\mathbb K$-algèbre $A$, alors la $\mathbb K$
 \eeq
 \label{sw}
 \end{The}
-La preuve est laissée en exercice.
+
+\begpre 
+%%	ÉTAPE 1
+\begin{Lem}
+Il existe une suite $(P_n)$ de polynômes sur $[-1,1]$ qui converge uniformément vers $x$.\label{step1}
+\end{Lem}
+Définir la suite de polynômes par $P_0=0$ et :
+\begin{eqnarray}
+\forall n\geq0:P_{n+1}(x)=P_n(x)+\frac12(x^2-P_n(x)^2)
+\end{eqnarray}
+On déduit alors par récurrence que $\forall n\in\mathbb N,\forall x\in[-1,1] :0\leq P_n(x)\leq|x|$. Alors, on déduit que la suite $(P_n)$ est croissante. Puisque qu'elle est majorée elle doit converger. La limite doit être point fixe de l'application donc est $x\mapsto|x|$. Par le théorème de Diniz \ref{diniz}, la convergence est uniforme.
+%%	ÉTAPE 2
+\begin{Lem}
+Si $f,g_i\in\overline{\mathcal A(F)}$, $i=1,...,n$, alors $|f|, \min_{i=1,...,n}g_i,\max_{i=1,...,n}g_i$ appartiennent aussi à $\overline{\mathcal A(F)}$. \label{step2}
+\end{Lem}
+Si $f\neq0$, poser $h=\frac{f}{||f||}$. Noter $h\in\overline{\mathcal A(F)}$ et a son image dans $[-1,1]$. Par le lemme \ref{step1}, il existe un polynôme $P$ tel que $P(h)$ converge uniformément vers $\frac{|f|}{||f||}$. Pour $g_1,g_2\in\overline{\mathcal A(F)}$, utiliser :
+\beq
+\min\{g_1,g_2\}=\frac{f+g+|f-g|}2
+\eeq
+et
+\beq
+\max\{g_1,g_2\}=\frac{f+g-|f-g|}2
+\eeq
+Conclure alors récursivement.
+%%	ÉTAPE 3
+\begin{Lem}
+Pour tous $x,y\in X$ et $x\neq y$, et pour tout couple de réels $\alpha,\beta$, il existe un élément $f\in\mathcal A(F)$ tel que $f(x)=\alpha$ et $f(y)=\beta$.\label{step3}
+\end{Lem}
+Avec les hypothèses du théorème, pour $z=x,y$, il existe $h_z\in F:h_z(x)\neq0$. Il existe également $g\in F$ tel que $g(x)\neq g(y)$. La fonction :
+\beq
+f:X\to\mathbb R,t\mapsto \alpha\frac{g(t)-g(y)}{g(x)-g(y)}\frac{h_x(t)}{h_x(x)}+\beta\frac{g(t)-g(x)}{g(y)-g(x)}\frac{h_y(t)}{h_y(y)}
+\eeq
+satisfait les hypothèses du lemme.
+%%	ÉTAPE 4
+\begin{Lem}
+Soient $f\in C(X,\mathbb R), x_0\in X$ et $\epsilon>0$. Alors il existe $g_{x_0,\epsilon}\in\overline{\mathcal A(F)}$ :
+\beq
+g_{x_0,\epsilon}(x_0)=f(x_0)\text{ et }g_{x_0,\epsilon}<f+\epsilon
+\eeq\label{step4}
+\end{Lem}
+Grâce au lemme \ref{step3}, pour chaque $y\in X\backslash\{x_0\}$, on peut choisir $h_y\in\mathcal A(F)$ telle que $f(y)=h_y(y)$ et $f(x_0)=f_y(x_0)$. Puisque $h_y$ et $f$ sont continues, l'ensemble :
+\beq U_y=\{x\in X:h_y(x)<f(x)+\epsilon\}
+\eeq
+est un ouvert. Puisque $\forall y\in X$, $y\in U_y$, on a (l'inclusion réciproque étant explicite) :
+\beq
+X=\bigcup_{y\in X} U_y
+\eeq
+Comme $X$ est compact, il existe une sous-collection d'ouvert finie $\{U_{y_i}\}_{1\leq i\leq p}$ telle que :
+\beq
+X=\bigcup_{i=1}^p U_y
+\eeq
+Poser alors $g_{x_0,\epsilon}=\max_{i=1,...,p}h_{y_i}$. Cette fonction satisfait les hypothèses du lemme et appartient à l'algèbre engendrée par le lemme \ref{step2}.
+%%	ÉTAPE 5
+\begin{Lem}
+Soient $f\in C(X,\mathbb R)$ et $\epsilon>0$. Il existe une fonction $g\in\overline{\mathcal A(F)}$ telle que $f-\epsilon\leq g\leq f+\epsilon$.
+\end{Lem}
+Par le lemme \ref{step4}, on peut choisir pour tout $x\in X$ une fonction $g_{x,\epsilon}\in\overline{\mathcal A(F)}$ telle que $g_{x,\epsilon}(x)=f(x)$ et $g_{x,\epsilon}<f+\epsilon$. Pour chaque $x\in V$, définir : 
+\beq V_x=\{z\in X:f(x)-\epsilon<g_{x,\epsilon}(z)\}
+\eeq
+Puisque $g_{x,\epsilon}$ est définie comme le maximum de plusieurs fonctions continues, elle est continue. $V_x$ est donc ouvert pour chaque $x\in X$. Procédant comme auparavant, remarquer que l'union des membres de la famille d'ouverts vaut $X$, en extraire une sous-famille finie. Définir cette fois $g$ comme le minimum des fonctions sélectionnées. Par le lemme \ref{step2}, $g\in\overline{\mathcal A(F)}$. Elle vérifie de plus les propriétés recherchées par le lemme, et plus généralement par le théorème de Stone-Weierstrass.
+\qed
+\end{Pre}
+
 \begcor
-Soit $X\subset\mathbb R^n$ un ensemble compact et $F\subseteq C(X,\mathbb C)$ une famille de fonction qui sépare $X$, invariante sous conjugaison complexe et qui ne s'annule pas sur $X$. Alors l'algèbre complexe $\mathcal A_\mathbb C(F)$ engendrée par $F$ est uniformément dense dans $C(X,\mathbb C)$.
+Soit $X\subset\mathbb R^n$ un ensemble compact et $F\subseteq C(X,\mathbb C)$ une famille de fonction qui sépare $X$, invariante sous conjugaison complexe et qui ne s'annule pas sur $X$. Alors l'algèbre complexe $\mathcal A_\mathbb C(F)$ engendrée par $F$ est uniformément dense dans $C(X,\mathbb C)$, c'est-à-dire $f\in\overline{\mathcal A(F)}$.
+\label{cor1}
+
 \end{Cor}
 \begpre
 On a $F=F^*$ car : 
 \beq F^*\subseteq F=(F^*)^*\subseteq F^*\eeq Comme $F$ sépare $X$ et ne s'annule pas sur $X$, $G=(F+F^*)\cup i(F-F^*)$ ne s'annule pas sur $X$ non plus et sépare aussi $X$. Or $F\subseteq C(X,\mathbb R)$ et par le théorème de Stone-Weierstrass \ref{sw}, $C(X,\mathbb R)=\overline{\mathcal A_\mathbb R(G)}$. Comme $C(X,\mathbb C)=C(X,\mathbb R)+iC(X,\mathbb R)$ et que $\overline{\mathcal A_\mathbb R(G)},i\overline{\mathcal A_\mathbb R(G)}\subset \overline{\mathcal A_\mathbb C(G)}$, on a que $C(X,\mathbb C)=\overline{\mathcal A_\mathbb C(G)}$. Or : $\mathcal A_\mathbb C(G)=\mathcal A_\mathbb C(F)$.
 \qed
-\label{cor1}
 \end{Pre}
 
 \begcor
 Soit $X\subset\mathbb R$ un ensemble compact. L'ensemble $\mathbb C[ X]$ est uniformément dense dans $C(X,\mathbb C)$.
 \end{Cor}
-\begpro
+\begpre
 $\mathbb C[ X]=\mathcal A_\mathbb C(\{1,id_X\})
 $ vérifie les hypothèses du corollaire \ref{cor1}.
 \qed
-\end{Prop}
+\end{Pre}
 
 \begcor
 Soit $I=[a,b]$ un intervalle fermé de $\mathbb R$. L'algèbre engendrée sur les complexes par $F$ défini comme : 
 \beq
-F={e^{2\pi ni\frac{x-a}{x-b}},x\in I, n\in\mathbb N}
+F=\left\{e^{2\pi ni\frac{x-a}{b-a}},x\in I, n\in\mathbb N\right\}
 \eeq
 est uniformément dense dans $V=\{f:f\in C([a,b],\mathbb C),f(a)=f(b)\}$. 
 \end{Cor}
-\begpro
+\begpre
 La fonction $\varphi$ définie par :
 \beq
-\varphi : [a,b]\to\partial B_1{0}, x\mapsto e^{2\pi ni\frac{x-a}{x-b}}
+\varphi : [a,b]\to\partial B_1(0), x\mapsto e^{2\pi ni\frac{x-a}{b-a}}
 \eeq
-induit un homéomorphisme isométrique $\Phi:C(\partial B_1(0),\mathbb C)\to V, f\mapsto f\circ\varphi$. Or, $C(\partial B_1(0),\mathbb C)=overline{\mathcal A_\mathbb C(\{1,z\mapsto z,z\mapsto z^*\})}$ puisque $\{1,z\mapsto z,z\mapsto z^*\}$ satisfait les hypothèses du corollaire \ref{cor1} et $F=\Phi|_{\mathcal A_\mathbb C(\{1,z\mapsto z,z\mapsto z^*\})}$.
+induit un homéomorphisme isométrique $\Phi:C(\partial B_1(0),\mathbb C)\to V, f\mapsto f\circ\varphi$. Or, $C(\partial B_1(0),\mathbb C)=\overline{\mathcal A_\mathbb C(\{1,z\mapsto z,z\mapsto z^*\})}$ puisque $\{1,z\mapsto z,z\mapsto z^*\}$ satisfait les hypothèses du corollaire \ref{cor1} et $F=\Phi|_{\mathcal A_\mathbb C(\{1,z\mapsto z,z\mapsto z^*\})}$.
 \qed
-\end{Prop}
+\end{Pre}
+
+\begin{comment}
 
 \section{Complétion des espaces $L^p$}
 \begdef
@@ -85,11 +150,11 @@ Une mesure $\mu$ définie sur une $\sigma$-algèbre $\Sigma\subseteq\mathcal P(\
 \eeq
 Elle est dite extérieurement-régulière si
 \beq
-\forall E\in\Sigma, \mu(E)=\inf\{\mu(V):V \text{ ouvert et } V\subset E\}
+\forall E\in\Sigma, \mu(E)=\inf\{\mu(V):V \text{ ouvert et } E\subset V\}
 \eeq
 Elle est enfin régulière si elle est simultanément extérieurement et intérieurement régulière, et localement finie si :
 \beq
-\forall x\in\mathbb R^n,\exists \text{ un ouvert }U\in\Sigma : \mu(U)<\infty
+\forall x\in\mathbb R^n,\exists \text{ un ouvert }U\in\Sigma : x\in U\text{ et } \mu(U)<\infty
 \eeq
 \end{Def}
 
@@ -100,7 +165,17 @@ Soit $\mu$ une mesure régulière et localement finie, $f\in L^p(\mathbb R^n,\mu
 \eeq
 \end{The}
 
-Preuve laissée en exercice.
+\begpre
+Trouvons $\varphi\in C_c(\mathbb R^n,\mathbb R^+)$ pour une fonction $f\in L^p(\mathbb R^n,\mu)$ positive. Poser pour $m\in\mathbb N$ :
+\beq
+f_m:x\mapsto \chi_{B_m(0)}(x)\min\{f(x),m\}
+\eeq
+Alors, pour chaque $m\geq0$, $f_m\in L^1(\mathbb R^n,\mu)$. Puisque $|f-f_m|^p\leq|f|^p$, le théorème de la convergence dominée implique que $(f_m)$ converge vers $f$ dans la norme $||\cdot||_p$. Il existe donc $k\in\mathbb N$ tel que $m\geq k$ implique $||f_k-f||_p<\epsilon/2$. Par définition de l'intégrale de Lebesgue, et puisque $f_m\in L^1(\mathbb R^n,\mu)$, on peut approcher $f_m$ par une fonction étagée simple positive, celle-ci se laissant approcher par une fonction $\varphi\in C_c(\mathbb R^n,\mathbb R_+)$, telle que $||f_m-\varphi||_1<\frac{\epsilon^p}{2^pm^{p-1}}$. Puisque $f_m$ est majorée par $m$, on peut le supposer aussi pour $\varphi$. On a alors $|f_m(x)-\varphi(x)|\leq m$, et $|f_m-\varphi|^p\leq m^{p-1}|f_m-\varphi|$. Par conséquent,
+\beq
+||f_m-\varphi||_p^p\leq m^{p-1}||f_m-\varphi||_1\leq\left(\frac\epsilon2\right)^p
+\eeq
+C'est-à-dire $||f-\varphi||_p<\epsilon$.
+\qed\end{Pre}
 
 \begthe
 Si $\mu$ est une mesure régulière et localement finie, l'espace de Hilbert $L^2(\mathbb R^n,\mu)$ est séparable.
@@ -110,4 +185,62 @@ Si $\mu$ est une mesure régulière et localement finie, l'espace de Hilbert $L^
 Soit $f\in C_c(\mathbb R^n)$. Des fonctions qui sont des combinaisons linéaires du type $\sum_{k=1}^m\alpha_k\chi_{E_k}$ pour $E_k=\times_{j=1}^n ]a_j,b_j]$ approchent $f$ uniformément dans $C_c(\mathbb R^n)$. Par conséquent, pour une mesure régulière et localement finie, les fonctions de ce type approchent $f$ dans $L^2(\mathbb R^n,\mu)$. On pourrait donc choisir les $\alpha_k,a_k,b_k$ rationnels pour approcher $f$ par une famille dénombrable.
 \qed
 \end{Pre}
+\end{comment}
+\section{Systèmes complets et orthonormés}
+\begdef 
+Soit $\mathcal H$ un $\mathbb K$-espace vectoriel. Une famille $F\subseteq \mathcal H$ est dite complète si l'ensemble $\text{Vect}(F)$ des combinaisons linéaires d'éléments de $F$ est un ensemble dense de $\mathcal H$.
+\end{Def}
 
+\begthe Soit $\mathcal H$ un espace de Hilbert sur $\mathbb K$ séparable. Soit $B=\{\varphi_n\}_{n\in I}$ une famille de vecteurs othonormée. Alors $|B|\leq|\mathbb N|$. \end{The}
+
+\begpre
+Puisque $\mathcal H$ est séparable, il existe une famille $D=\{\psi_n\}_{n\in \mathbb N}\subset \mathcal H$ dense dans $\mathcal H$. Il existe alors pour chaque $\varphi_k\in B$ un élément de $\psi_k\in D$ tel que $||\varphi_k-\psi_k||\leq 1/\sqrt2$. Si $\varphi_k\neq\varphi_l$, alors par orthonormalité $||\varphi_k-\varphi_l||^2=2$ est par conséquent, $||\varphi_k-\varphi_l||=\sqrt2$. Mais alors, $\psi_k\neq\psi_l$ puisque la supposition contraire entraînerait $||\varphi_k-\varphi_l||\leq||\varphi_k-\psi_k||+||\varphi_l-\psi_k||<\sqrt2$, une contradiction. On a alors une fonction injective de $B$ dans $D$.
+\qed
+\end{Pre}
+
+\begthe
+Soit $\mathcal H$ un espace de Hilbert séparable. Il existe alors un système complet et orthonormé $\{b_n\}_{n\in I}$ avec $I\subseteq\mathbb N$.
+\end{The}
+
+\begpre
+Comme $\mathcal H$ est séparable, il existe une famille $D=\{d_n\}_{n\in\mathbb N}$ dense dans $\mathcal H$. On va itérativement construire une famille $\{v_n\}_{n\in J}\subseteq D$ de la manière suivante :
+\begin{eqnarray}
+\varphi(n+1)=\inf\{k\in\mathbb N:k>\varphi(n)\text{ et }d_k\notin \text{Vect}[v_0,...,v_n]\}\\
+\varphi(0)=0, v_{n+1}=d_{\varphi(n+1)}
+\end{eqnarray}
+Clairement, la famille $\{v_n\}_{n\in\mathbb J}$ est formée de vecteurs linéairement indépendants. De plus, $\text{Vect}[v_n]_{n\in J}$ est dense dans $\mathcal H$, puisque $D\subseteq\text{Vect}[v_n]_{n\in J}$. On forme maintenant une famille de vecteurs orthonormés à partir de $\{v_n\}_{n\in J}$ et $\text{Vect}[v_n]_{n\in J}$.
+\beq
+b_n=\frac1{||v_n-\sum_{k=0}^{n-1}\langle b_k,v_n\rangle b_k||}\left(v_n-\sum_{k=0}^{n-1}\langle b_k,v_n\rangle b_k\right)
+\eeq
+Manifestement, $\{b_n\}_{n\in J}$ est une famille de vecteurs orthonormés et $\text{Vect}[b_n]_{n\in J}=\text{Vect}[v_n]_{n\in J}$, de sorte de $\{b_n\}_{n\in J}$ forme un système complet.
+\qed\end{Pre}
+
+\begthe
+Soit $\{b_n\}_{n\in B}, B\subseteq\mathbb N$ une famille de vecteurs orthonormés d'un espace de Hilbert $\mathcal H$ séparable. Alors, les affirmations suivantes sont équivalentes :
+\begin{enumerate}
+\item $\{b_n\}_{n\in B}$ est complet
+\item $\forall x\in \mathcal H$, $x=\sum_{n\in B}\langle b_n,x\rangle b_n$
+\item $\forall x,y\in \mathcal H$, $\langle x,y\rangle=\sum_{n\in B}\langle x,b_n\rangle \langle b_n,y\rangle$
+\end{enumerate}
+\end{The}
+
+\begpre
+Montrer que $1.\implies2.$. Pour $F\subseteq B$, $|F|<\infty$, former les espaces $V_F=\text{Vect}[\{b_n\}_{n\in F}]$. Tous ces espaces sont des sous-espaces vectoriels de $\mathcal H$ fermés, complets et convexes. $\{b_n\}_{n\in B}$ étant complet, $\cup_{F\subseteq B:|F|<\infty}V_F$ est dense dans $\mathcal H$. Soient $x\in \mathcal H$, $\epsilon>0$. Il existe alors un $y\in V_F$ tel que $||x-y||<\epsilon$. A fortiori, notant $x_{V_F}$ la projection de $x$ sur $V_F$ (et de même pour $G$ ensuite), $||x-x_{V_F}||<\epsilon$, et si $F\subseteq G\subseteq B$, $|G|<\infty$, on a :
+\beq
+||x-x_{V_G}||=\inf\{||x-y||:y\in V_G\}\leq\inf\{||x-y||:y\in V_F\}<\epsilon
+\eeq
+C'est-à-dire, les projections de $x$ sur les $V_F$ convergent vers $x$. Poser $x_{V_F}=\sum_{n\in F}\lambda_n b_n$. Puisque $x-x_{V_F}\perp V_F$, on doit avoir pour $b_m\in V_F$ :
+\beq
+0=\langle x,b_m\rangle-\overline\lambda\langle b_m,b_m\rangle
+\eeq
+d'où $\lambda_m=\langle b_m,x\rangle$ et enfin :
+\beq
+x=\lim_{n\to\infty}\sum_{k\in B,k\leq n}\langle b_k,x\rangle b_k
+\eeq
+Montrer que $2.\implies3.$ 
+\begin{equation}
+\langle x,y\rangle=\sum_{n\in B}\sum_{m\in B}\langle b_n,x\rangle \langle y,b_m\rangle\langle b_n,b_m\rangle=\sum_{n\in B}\langle x,b_n\rangle \langle b_n,y\rangle
+\end{equation}
+Montrer que $3.\implies1.$. En posant $x=y$, on obtient $||x||=\sum_{n\in B}|\langle x,b_n\rangle|^2<\infty$. Ainsi, la suite $\left(\sum_{k\in B,k\leq n}\right)_{n\in\mathbb N}\langle b_k,x\rangle b_k$ est une suite de Cauchy dont on a clairement la limite $x$ car $\left(\langle x,b_k\rangle\right)_{k\in B}$ est une suite dans $l^2(B)$.
+\qed
+\end{Pre}

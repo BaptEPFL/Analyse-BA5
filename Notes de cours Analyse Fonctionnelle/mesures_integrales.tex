@@ -9,7 +9,13 @@ Soit $A\subseteq\mathbb R^n$. Alors la fonction $d_A:\mathbb R^n\to\mathbb R^+$ 
 \beq x\mapsto d(x,A)\eeq
 est continue.
 \end{The}
-Preuve laissée en exercice.
+\begpre
+Soit $A\neq\emptyset$. Soit $\epsilon>0$ et $x,y\in\mathbb R^n$ tels que $|x-y|<\delta$. Supposer (autrement inverser les rôles) que $d_A(y)\leq d_A(x)$. Utilisant l'inégalité triangulaire :
+\begin{equation}
+|d_A(x)-d_A(y)|=\inf_{z\in A}d(x,z)-\inf_{z\in A}d(y,z)\leq d(x,y)+\inf_{z\in A}d(y,z)-\inf_{z\in A}d(y,z)<\delta
+\end{equation}
+Prendre $\delta=\epsilon$.
+\qed\end{Pre}
 \begdef
 Un ensemble de $\mathbb R^n$ est dit relativement compact si sa fermeture est compact.
 \end{Def}
@@ -32,7 +38,7 @@ Soient $K\subset V\subseteq\mathbb R^n$, avec $K$ compact et $V$ ouvert. Il exis
 \end{Lem}
 \begpre
 Par le lemme \ref{rc}, il existe un ouvert $U$ contenant $K$ relativement compact. Remplaçant si nécessaire $V$ par $V\cap U$, on peut supposer que $V$ est relativement compact. La fonction :
-\beq g(x)=\frac{d(x,\mathbb R^n\backslash V)}{d(x,\mathbb R^n\backslash V)+d(x,K)}\eeq est manifestement définie pour tout $x\in \mathbb R^n$ et continue (exercice). De plus, $g|_K=1$ et $g|_{\mathbb R^n\backslash V}=0$. Soient alors les ouverts $W=g^{-1}]2/3,1]$ et $U=g^{-1}]1/3,1]$. Clairement, $K\subset W\subset \overline{U}\subset V$ et la fonction :
+\beq g(x)=\frac{d(x,\mathbb R^n\backslash V)}{d(x,\mathbb R^n\backslash V)+d(x,K)}\eeq est manifestement définie pour tout $x\in \mathbb R^n$ et continue comme combinaison de fonctions continues. De plus, $g|_K=1$ et $g|_{\mathbb R^n\backslash V}=0$. Soient alors les ouverts $W=g^{-1}]2/3,1]$ et $U=g^{-1}]1/3,1]$. Clairement, $K\subset W\subset \overline{U}\subset V$ et la fonction :
 \beq
 f(x)=\frac{d(x,\mathbb R^n\backslash U)}{d(x,\mathbb R^n\backslash U)+d(x,W)}
 \eeq
@@ -49,13 +55,325 @@ est appelée une partition de $K$ subordonnée au recouvrement $\{V_n\}_{1\leq n
 \end{Def}
 
 \begin{Cor}
-Soit $K\subset \mathbb R^n$ compact et $\{V_n\}_{1\leq n\leq m}$ une collection finie d'ensembles ouverts qui recouvrent $K$. Il existe alors une partition de $K$ subordonnée à $\{V_n\}_{1\leq n\leq m}$.
+Soit $K\subset \mathbb R^n$ compact et $\{V_n\}_{1\leq n\leq m}$ une collection finie d'ensembles ouverts qui recouvrent $K$. Il existe alors une partition de $K$ subordonnée à $\{V_n\}_{1\leq n\leq m}$.\label{partition}
 \end{Cor}
 \begpre
-Soit $x\in K$. Il existe $V_{n_x}$ du recouvrement tel que $x\in V_n$. Par le lemme d'Urysohn \ref{ury}, il existe une fonction $g_x$ telle que $\{x\}\prec g_x\prec V_{n_x}$. L'ensemble $K_x=g_x^{-1}\{1\}$ est alors un voisinage compact de $\{x\}$. Comme $K$ est compact et puisque $\{K_x\}_{x\in K}$ recouvre $K$, il existe une sous-collection finie $\{K_{x_j}\}_{j=1,...,p}$ qui recouvre $K$. Pour chaque $V_n$ du recouvrement initiale, poser :
+Soit $x\in K$. Il existe $V_{n_x}$ du recouvrement tel que $x\in V_n$. Par le lemme d'Urysohn \ref{ury}, il existe une fonction $g_x$ telle que $\{x\}\prec g_x\prec V_{n_x}$. L'ensemble $K_x=g_x^{-1}\{1\}$ est alors un voisinage compact de $\{x\}$. Comme $K$ est compact et puisque $\{\accentset{\circ}{K_x}\}_{x\in K}$ recouvre $K$, il existe une sous-collection finie $\{K_{x_j}\}_{j=1,...,p}$ qui recouvre $K$. Pour chaque $V_n$ du recouvrement initiale, poser :
 \beq C_n=\bigcup_{K_{x_j}\subset V_n, 1\leq i\leq p}K_{x_j}\eeq Tous les $C_n$ sont compacts et leur collection recouvre $K$. De plus, $C_n\subset V_n$, $n=1,...,m$. Une nouvelle application du lemme d'Urysohn livre alors $m$ fonctions $h_n$ telles que $C_n\prec h_n\prec V_n$. Poser alors $f_1=h_1$ et $f_n=h_n\prod_{k=1}^{n-1}(1-h_k)$, pour $n\geq 2$. Clairement, $f_n\prec V_n$ pour $n=1,...,m$ et :
 \beq
 \sum_{n=1}^mf_n=1-\prod_{n=1}^m(1-h_n)
 \eeq
 De plus, si $x\in K$, $x\in C_n$ pour au moins un $n$, de sorte que $h_n(x)=1$, c'est-à-dire la propriété espérée.
 \qed\end{Pre}
+
+\section{Mesures et fonctionnelles positives}
+\begdef
+Une fonctionnelle $\Phi:C_c(\mathbb R^n,\mathbb R)\to\mathbb R$ est dite positive si $f\geq0$ implique $\Phi(f)\geq0$.
+\end{Def}
+
+\begdef Soit $\Phi:C_c(\mathbb R^n,\mathbb R)$ une fonctionnelle positive. Soient $K,V\subset\mathbb R^n$ avec $K$ compact, $V$ ouvert. Définir :
+\begin{eqnarray}
+\mu(K)=\inf\{\Phi(f):K\prec f\}\in\mathbb R^+\\
+\mu(V)=\sup\{\Phi(f):f\prec V\}\in\mathbb R^+\cup\{\infty\}
+\end{eqnarray}
+\end{Def}
+
+\begin{Lem}
+Soient $K,V\subset\mathbb R^n$, $K$ compact, $V$ ouvert. Alors :
+\begin{eqnarray}
+\mu(K)=\inf\{\mu(W):K\subset W, W\text{ ouvert}\}\\
+\mu(V)=\sup\{\mu(C):C\subset V, C\text{ compact}\}
+\end{eqnarray}
+\end{Lem}
+\begpre
+Si $K\subset W\subset\mathbb R^n$, $K$ compact, $W$ ouvert, alors par le lemme d'Urysohn \ref{ury}, il existe une fonction $K\prec f\prec W$. Puisque $f^{-1}\{1\}$ est un voisinage de $K$, on a :
+\beq
+\mu(K)=\inf\{\Phi(f):K\prec f\}\geq\inf\{\mu(U):K\subset U, U\text{ ouvert}\}\geq\mu(K)
+\eeq Similairement, puisque pour une fonction $f\prec V$, on a $\text{supp}(f)\subset V$ et que $\text{supp}(f)$ est compact, on :
+\beq
+\mu(V)=\sup\{\Phi(f):f\prec V\}\leq\sup\{\mu(C):C\subset V, C\text{ compact}\}\leq\mu(V)
+\eeq
+\qed\end{Pre}
+
+\begdef On définit une mesure intérieure $\mu_*:\mathcal P(\mathbb R^n)\to\mathbb R_+\cup\{\infty\}$ et une mesure extérieure $\mu^*:\mathcal P(\mathbb R^n)\to\mathbb R_+\cup\{\infty\}$ par :
+\beq
+\mu_*(E)=\sup\{\mu(K):K\subseteq E,K\text{ compact}\} \text{ et } \mu^*(E)=\inf\{\mu(V):E\subseteq V,V\text{ ouvert}\}
+\eeq
+\end{Def}
+
+\begin{Lem}
+Si $\{F_n\}_{n\in\mathbb N}$ est une suite de sous-ensembles de nombres réels positifs, alors :
+\beq
+\inf\left\{\sum_{n=0}^\infty a_n|\forall k : a_k\in F_k\right\}=\sum_{n=0}^\infty\inf F_n\in\mathbb R_+\cup\{\infty\}
+\eeq\label{eqcheloue}
+\end{Lem}
+\begpre
+Noter $A$ le terme de gauche, $B$ le terme de droite. D'abord, remarquer que $B$ minore l'ensemble $\left\{\sum_{n=0}^\infty a_n|\forall k : a_k\in F_k\right\}$ donc $B\leq A$. Si $B=\infty$, alors $A=B$. Supposer donc $B<\infty$. Alors, $\forall n\geq0$, $\inf F_n<\infty$. Soit $x>B$ et poser $\epsilon=x-B$.
+\beq
+\forall n\in\mathbb N, \exists a_n\in F_n:a_n<\inf F_n+\epsilon/2^{n+1}
+\eeq
+Alors, $A\leq\sum_{n\geq0}a_n\leq B+\epsilon=x$. Puisque $x$ est arbitraire, $A\leq B$.
+\qed\end{Pre}
+
+\begin{Lem}
+La mesure intérieure $\mu_*$ est sur-additive alors que la mesure extérieure est sous-additive. C'est-à-dire que si $\{E_n\}_{n\in\mathbb N}$ est une suite de sous-ensembles de $\mathbb R^n$ deux à deux disjoints, on a :
+\beq
+\mu_*\left(\bigcup_{n=0}^\infty E_n\right)\geq\sum_{n=0}^\infty \mu_*(E_n)
+\eeq
+et
+\beq
+\mu^*\left(\bigcup_{n=0}^\infty E_n\right)\leq\sum_{n=0}^\infty \mu^*(E_n)
+\eeq\label{sursous}
+\end{Lem}
+
+\begpre
+Pour montrer la première inégalité, il suffit de montrer que pour tout $m\in\mathbb N$ :
+\beq
+\mu_*\left(\bigcup_{n=0}^m E_n\right)\geq\sum_{n=0}^m \mu_*(E_n)
+\eeq
+Par définition de la mesure extérieure,
+\beq
+\sum_{n=0}^m\mu_*(E_n)=\sup\left\{\sum_{n=0}^m\mu(K_n):K_n\subseteq E_n, K_n\text{ compact}\right\}
+\eeq
+Puisque l'union finie de compact est contenue dans l'union finie des $(E_n)_{n=0}^m$, il suffit de montrer que :
+\beq
+\mu\left(\bigcup_{n=0}^mK_n\right)\geq\sum_{n=0}^m\mu(K_n)
+\eeq
+Plus simplement, il suffit de montrer que pour deux compacts disjoints $K_1$ et $K_2$, $\mu(K_1\cup K_2)\geq \mu(K_1)+ \mu(K_2)$. Soit alors $K_1\cup K_2\prec f$. Comme $K_1$ est disjoint de $K_2$, le lemme d'Urysohn \ref{ury} assure qu'il existe $f_1$ telle que $K_1\prec f_1\prec\mathbb R^N\backslash K_2$. Par le même argument, il existe $f_2$ telle que $K_2\prec f_2\prec \mathbb R^N\backslash\text{supp}(f_1)$. Alors $K_1\cup K_2\prec f(f_1+f_2)\leq f$, $K_1\prec ff_1$ et $K_2\prec ff_2$, de sorte que :
+\beq
+\Phi(f)\geq\Phi(ff_1)+\Phi(ff_2)\geq\mu(K_1)+\mu(K_2)
+\eeq
+En prenant l'infimum sur toutes les fonctions $f$, on trouve $\mu(K_1\cup K_2)\geq \mu(K_1)+ \mu(K_2)$.
+
+Soit maintenant une suite d'ouverts $\{V_n\}_{n\in\mathbb N}$, $E_n\subseteq V_n$. Clairement, $\bigcup_{n=0}^\infty E_n\subseteq\bigcup_{n=0}^\infty V_n$. Soit $f\prec \bigcup_{n=0}^\infty V_n$. Puisque $f$ est à support compact, le corollaire \ref{partition} implique qu'il existe une partition $(f_n)_{n=0}^m$ de $\text{supp}(f)$ subordonnée au recouvrement fini $\{V_n\}_{n=0}^m$. Alors :
+\beq
+\Phi(f)=\Phi\left(f\sum_{n=0}^mf_n\right)=\sum_{n=0}^m\Phi(ff_n)\leq\sum_{n=0}^m\mu(V_n)\leq\sum_{n=0}^\infty \mu(V_n)
+\eeq
+Il suit en prenant l'infimum à gauche :
+\beq
+\mu\left(\bigcup_{n=0}^\infty V_n\right)\leq\sum_{n=0}^\infty\mu(V_n)\eeq
+Par le lemme \ref{eqcheloue} :
+\beq
+\mu^*\left(\bigcup_{n=0}^mE_n\right)\leq\inf\left\{\mu\left(\bigcup_{n=0}^mV_n\right):\forall k, E_k\subseteq V_k\right\}\leq\inf\left\{\sum_{n=0}^\infty \mu(V_n):\forall k, E_k\subseteq V_k\right\}=\sum_{n=0}^\infty\mu^*(E_n)
+\eeq
+\qed\end{Pre}
+
+\begdef
+Soit $\Phi: C_c(\mathbb R^N,\mathbb R)\to\mathbb R$ une fonctionnelle positive ainsi que ses mesures intérieures et extérieures $\mu_*$ et $\mu^*$. Un ensemble $E\subseteq\mathbb R^N$ est dit mesurable si et seulement si pour tout compact $K\subset \mathbb R^N$ :
+\beq
+\mu_*(K\cap E)=\mu^*(K\cap E)
+\eeq
+La collection des ensembles mesurables est dénotée $\Sigma$.
+\end{Def}
+
+\begin{Lem}
+Soit $\{E_n\}_{n\in\mathbb N}\subseteq\Sigma$ une suite d'ensembles mesurables deux à deux disjoints. Alors $\bigcup_{n=0}^\infty E_n\in\Sigma$ et :
+\beq
+\mu_*\left(\bigcup_{n=0}^\infty E_n\right)=\sum_{n=0}^\infty\mu_*(E_n)
+\eeq \label{addisub}
+\end{Lem}
+
+\begpre
+Commencer par montrer que l'union des $\{E_n\}$ est dans $\Sigma$. Prendre $K\subset\mathbb R^n$ compact. Alors :
+\begin{equation}\begin{split}
+\mu_*\left(K\cap\bigcup_{n\in\mathbb N}E_n\right)&=\mu_*\left(\bigcup_{n\in\mathbb N}K\cap E_n\right)
+\\& \leq\mu^*\left(\bigcup_{n\in\mathbb N}K\cap E_n\right)\text{, car $\mu_*\leq\mu^*$}
+\\& \leq \sum_{n\in\mathbb N}\mu^*(K\cap E_n)\text{, par sous-additivité \ref{sursous}}
+\\& =\sum_{n\in\mathbb N}\mu_*(K\cap E_n)\text{, car $E_n\in\Sigma$}
+\\& \leq \sum_{n\in\mathbb N}\mu_*(E_n)\text{, par monotonie}
+\\& \leq \mu_*\left(\bigcup_{n\in\mathbb N}E_n\right)\text{, par sur-additivité \ref{sursous}}
+\end{split}\end{equation}
+Ainsi, d'une part : 
+\beq
+\mu_*\left(K\cap\bigcup_{n\in\mathbb N}E_n\right)\leq\mu^*\left(K\cap\bigcup_{n\in\mathbb N}E_n\right)\leq\sum_{n\in\mathbb N}\mu_*(K\cap E_n)\leq\mu_*\left(K\cap\bigcup_{n\in\mathbb N}E_n\right)
+\eeq
+donc $\bigcup_{n\in\mathbb N}E_n\in\Sigma$. D'autre part, en prenant le supremum sur tous les compacts $K\subseteq\bigcup_{n\in\mathbb N}E_n$ :
+\beq
+\mu_*\left(\bigcup_{n\in\mathbb N}E_n\right)\leq \sum_{n\in\mathbb N}\mu_*(E_n)\leq\mu_*\left(\bigcup_{n\in\mathbb N}E_n\right)
+\eeq
+\qed\end{Pre}
+
+\begin{Lem} Soient $E,F\in\Sigma$, alors $E\backslash F\in \Sigma$.\label{comple}
+\end{Lem}
+\begpre
+Soit $K\subset\mathbb R^N$ compact. Il reste à montrer que $\mu_*(K\cap(E\backslash F))\geq\mu^*(K\cap(E\backslash F))$. Comme $K\cap(E\backslash F)\subseteq K$, $K\cap E\subseteq K$ et $K\cap F\subseteq K$, il existe des ouverts $V_E$ et $V_F$ de mesures extérieures finies tels que $K\cap E\subseteq V_E$ et $K\cap F\subseteq V_F$. Soient des compacts $K\subseteq K\cap E$ et $K_F\subseteq K\cap F$. On a alors :
+\beq
+K_E\backslash V_F\subseteq K\cap E\backslash K\cap F=K\cap(E\backslash F)\subseteq V_E\backslash K_F
+\eeq
+Remarquer alors que $K_E\backslash V_F$ est compact, $V_E\backslash K_F$ est ouvert et que :
+\beq
+V_E\backslash K_F=(V_E\backslash K_E)\cup (K_E\backslash V_F) \cup (V_F\backslash K_F)
+\eeq
+Par monotonie et sous-additivité de la mesure extérieure, on a :
+\begin{equation}\begin{split}
+\mu^*(K\cap(E\backslash F))&\leq\mu^*(V_E\backslash K_F)\\ &\leq \mu^*(V_E\backslash K_E)+ \mu^*(K_E\backslash V_F) + \mu^*(V_F\backslash K_F) \\ &\leq \mu^*(V_E)-\mu^*(K_E)+\mu_*(K\cap(E\backslash F))+\mu^*(V_F)-\mu^*(K_F)
+\end{split}\end{equation}
+en utilisant la mesurabilité des compacts. Avec la mesurabilité de $K\cap E$ et $K\cap F$, on obtient de plus :
+\beq
+\inf\{\mu^*(V_E)-\mu^*(K_E)+\mu^*(V_F)-\mu^*(K_F):K_E\subseteq K\cap E\subseteq V_E, K_F\subseteq K\cap F\subseteq V_F\}=0
+\eeq
+\qed\end{Pre}
+
+\begin{The}
+Soit $\Phi:C_c(\mathbb R^N,\mathbb R))\to\mathbb R$ une fonctionnelle positive, sa mesure intérieure $\mu_*$ et extérieure $\mu^*$ ainsi sur les ensembles mesurables $\Sigma$. Alors $\Sigma$ est une $\sigma$-algèbre borelienne. De plus $\mu$ définit alors une mesure régulière et complète sur $\Sigma$.
+\end{The}
+
+\begpre
+Clairement, $\emptyset\in\Sigma$. Le complémentaire d'une ensemble mesurable est mesurable par le lemme \ref{comple}. Soit maintenant $\{E_n\}_{n\in\mathbb N}\subset\Sigma$. Poser $F_0=E_0$ et pour $n\geq1$, $F_n=E_n\backslash(\bigcup_{0\geq m\geq n-1}F_m)$. $\{F_n\}_{n\in\mathbb N}\subset \Sigma$ par le lemme \ref{addisub} et $\bigcup_{n\in\mathbb N}E_n=\bigcup_{n\in\mathbb N}E_n$. Ainsi, $\Sigma$ est une $\sigma$-algèbre. Ensuite, puisque les fermés sont mesurables, les ouverts le sont aussi par le lemme \ref{comple}, c'est-à-dire $\Sigma$ est borelienne. Montrer maintenant que $\mu$ définit bien une mesure sur $\Sigma$. Soit $E\in\Sigma$. Par sous-additivité de la mesure intérieure, la mesurabilité de E et des $B_n(0)$ ainsi que la sur-additivité de $\mu_*$, on a :
+\begin{equation}\begin{split}
+\mu^*(E)&=\mu^*\left(\left(\bigcup_{n\in\mathbb N^*}B_n(0)\right) \cap E\right)\\
+&=\mu^*\left(\left(\bigcup_{n\in\mathbb N^*}B_n(0)\backslash B_{n-1}(0) \right) \cap E\right)
+\\& \leq\sum_{n\in\mathbb N^*}\mu^*(B_n(0)\backslash B_{n-1}(0) \cap E)
+\\& =\sum_{n\in\mathbb N^*}\mu^*((B_n(0)\cap(B_n(0)\backslash B_{n-1}(0) \cap E))
+\\& = \sum_{n\in\mathbb N^*}\mu_*((B_n(0)\cap(B_n(0)\backslash B_{n-1}(0) \cap E))
+\\& = \sum_{n\in\mathbb N^*}\mu_*(B_n(0)\backslash B_{n-1}(0) \cap E)
+\\&=\mu_*\left(\left(\bigcup_{n\in\mathbb N^*}B_n(0)\backslash B_{n-1}(0) \right) \cap E\right)
+\\& = \mu_*(E)
+\end{split}\end{equation}
+En utilisant le lemme \ref{addisub}, il est clair que $\mu$ définit bien une mesure. La régularité de $\mu$ est claire par les dernières équations, et la complétude découle de la définition de $\mu$.
+\qed\end{Pre}
+
+\begdef
+Si $\Phi$ est l'intégrale de Riemann, alors $\mu$ est la mesure de Lebesgue.
+\end{Def}
+
+\begin{The}
+\textbf{Théorème de Riesz-Kakutani} Soit $\Phi:C_c(\mathbb R^n)\to\mathbb R$ une fonctionnelle positive. Il existe alors une mesure $\mu$ régulière et complète, définie sur une $\sigma$-algèbre $\Sigma\subseteq\mathcal P(\mathbb R^n)$ borelienne, telle que :
+\beq
+\forall f\in C_c(\mathbb R^n) : \Phi(f)=\int_{\mathbb R^n}f\mathrm{d}\mu\eeq\label{rk}
+\end{The}
+
+\begpre
+Il est suffisant de prouver le théorème dans le cas où $f$ prend des valeurs réelles. En fait, il suffit de prouver que :
+\beq
+\forall f\in C_c(\mathbb R^N,\mathbb R) : \Phi f\leq \int_{\mathbb R^N}f\mathrm{d}\mu
+\eeq
+En effet, dès lors :
+\beq
+-\Phi f=\Phi(-f)\leq\int_{\mathbb R^N}(-f)\mathrm{d}\mu=-\int_{\mathbb R^N}f\mathrm{d}\mu
+\eeq
+Soit $K=\text{supp}(f)$ et $[a,b]$ son image. Soit $\epsilon>0$ et pour chaque $i=0,...,n$ avec $y_i-y_{i-1}<\epsilon$ :
+\beq
+y_0<a<y_1<...<y_n=b
+\eeq
+Définir pour chaque $i=1,..,n$ :
+\beq
+E_i=\{x\in\mathbb R^N:y_{i-1}<f(x)<y_i\}\cap K
+\eeq
+Car $f$ est continue, $f$ est Borel-mesurable et les ensembles $E_i$ sont des ensembles de Borel disjoints d'union $K$. Aussi, il existe des ouverts $V_i$ tels que $E_i\subseteq V_i$ et $\mu(V_i)<\mu(E_i)+\epsilon/n$. De plus :
+\beq \forall x\in V_i: f(x)<y_i+\epsilon\eeq
+Par le corollaire \ref{partition}, il existe, pour chaque $i$, $h_i\prec V_i$ une partition de $K$ extraite de la famille finie des $\{V_i\}_{i=1}^n$. En particulier, $f=\sum h_i f$ d'où :
+\beq
+\mu(K)\leq\Phi\left(\sum_{i=1}^n h_i\right)=\sum_{i=1}^n \Phi h_i
+\eeq
+D'autre part, puisque $h_if\leq(y_i+\epsilon)h_i$ et $y_i<f(x)+\epsilon$ sur $E_i$ :
+\begin{equation}\begin{split}
+\Phi f&=\sum_{i=1}^n\Phi(h_if)
+\leq\sum_{i=1}^n(y_i+\epsilon)\Phi h_i
+= \sum_{i=1}^n(|a|+y_i+\epsilon)\Phi h_i-|a|\sum_{i=1}^n\Phi h_i
+\leq \sum_{i=1}^n(|a|+y_i+\epsilon)(\mu(E_i)+\epsilon/n)-|a|\mu(K)
+\\ &= \sum_{i=1}^n(y_i-\epsilon)\mu(E_i)+2\epsilon\mu(K)+\frac{\epsilon}n\sum_{i=1}^n(|a|+y_i+\epsilon)
+\leq \int_{\mathbb R^N}f\mathrm{d}\mu+\epsilon(2\mu(K)+|a|+b+\epsilon)
+\end{split}\end{equation}
+\qed\end{Pre}
+
+\section{Résultats de densité}
+
+\begdef
+Une mesure $\mu$ définie sur une $\sigma$-algèbre $\Sigma\subseteq\mathcal P(\mathbb R^n)$ borélienne est dite intérieurement régulière si :
+\beq
+\forall E\in\Sigma, \mu(E)=\sup\{\mu(K):K \text{ compact et } K\subset E\}
+\eeq
+Elle est dite extérieurement-régulière si
+\beq
+\forall E\in\Sigma, \mu(E)=\inf\{\mu(V):V \text{ ouvert et } E\subset V\}
+\eeq
+Elle est enfin régulière si elle est simultanément extérieurement et intérieurement régulière, et localement finie si :
+\beq
+\forall x\in\mathbb R^n,\exists \text{ un ouvert }U\in\Sigma : x\in U\text{ et } \mu(U)<\infty
+\eeq
+\end{Def}
+
+\begin{Lem}
+Une mesure régulière et localement finie $\mu$ dans $\mathbb R^n$ assigne à tout compact $K$ de $\mathbb R^n$ une mesure finie.
+\end{Lem}
+\begin{Pre}
+Pour chaque $x\in K$ il existe un ouvert $V_x$ contenant $x$ et de mesure finie. L'ensemble des tels $V_x$ recouvre $K$, on peut donc en extraire un sous-recouvrement fini $(V_i)_{i=1,..p}$, associé aux $(x_i)_{i=1,..p}$. Poser :
+\beq
+E_i=K\bigcap_{i=1}^p\left(V_i\backslash \bigcup_{j=1}^{i-1} V_j\right)
+\eeq
+La régularité de $\mu$ implique la mesurabilité de ces ensembles. De plus, $K=\bigcup_{i=1}^pE_i$ et cette union est disjointe. Ainsi :
+\beq
+\mu(K)=\sum_{i=1}^p\mu(E_i)\leq\sum_{i=1}^p\mu(V_i)<\infty
+\eeq
+\qed\end{Pre}
+
+\begin{Lem}
+L'espace des fonctions simples Lebesgue intégrables est dense dans $L^p(\mathbb R^n,\mu)$, pour une mesure régulière et localement finie $\mu$.
+\label{densite1}\end{Lem}
+
+\begin{Pre}
+Trouvons $\varphi\in C_c(\mathbb R^n,\mathbb R^+)$ pour une fonction $f\in L^p(\mathbb R^n,\mu)$ positive. Poser pour $m\in\mathbb N$ :
+\beq
+f_m:x\mapsto \chi_{B_m(0)}(x)\min\{f(x),m\}
+\eeq
+Alors, pour chaque $m\geq0$, $f_m\in L^1(\mathbb R^n,\mu)$. Puisque $|f-f_m|^p\leq|f|^p$, le théorème de la convergence dominée implique que $(f_m)$ converge vers $f$ dans la norme $||\cdot||_p$. Il existe donc $k\in\mathbb N$ tel que $m\geq k$ implique $||f_k-f||_p<\epsilon/2$. Par définition de l'intégrale de Lebesgue, et puisque $f_m\in L^1(\mathbb R^n,\mu)$, on peut approcher $f_m$ par une fonction étagée simple positive, celle-ci se laissant approcher par une fonction $\varphi\in C_c(\mathbb R^n,\mathbb R_+)$, telle que $||f_m-\varphi||_1<\frac{\epsilon^p}{2^pm^{p-1}}$. Puisque $f_m$ est majorée par $m$, on peut le supposer aussi pour $\varphi$. On a alors $|f_m(x)-\varphi(x)|\leq m$, et $|f_m-\varphi|^p\leq m^{p-1}|f_m-\varphi|$. Par conséquent,
+\beq
+||f_m-\varphi||_p^p\leq m^{p-1}||f_m-\varphi||_1\leq\left(\frac\epsilon2\right)^p
+\eeq
+C'est-à-dire $||f-\varphi||_p<\epsilon$.
+\qed\end{Pre}
+
+\begin{Lem}
+L'espace des combinaisons linéaires de fonctions indicatrices sur des ouverts de mesures finies ou sur des compacts est dense dans $L^p(\mathbb R^n,\mu)$, pour une mesure régulière et localement finie $\mu$.\label{densite2}
+\end{Lem}
+
+\begin{Pre}
+Soient $\epsilon>0$ et $E$ un ensemble mesurable de $\mathbb R^n$ et de mesure finie. Puisque $\mu$ est régulière, il existe un compact $K_E$ et un ouvert $V_E$ tel que $K_E\subseteq E\subseteq V_E$ et :$$\mu(V_E)-\epsilon^p\leq\mu(E)\leq\mu(K_E)+\epsilon^p$$. Il suit :
+\beq
+||\chi_{V_E}-\chi_{E}||_p,||\chi_{K_E}-\chi_{E}||_p<\epsilon
+\eeq
+Utiliser le lemme \ref{densite1} pour conclure.
+\qed\end{Pre}
+
+\begin{Lem}
+Pour une mesure régulière et localement finie $\mu$, l'espace des fonctions continues à support compact est dense dans $L^p(\mathbb R^n,\mu)$ :
+\beq \overline{C_c(\mathbb R^n)}^{||\cdot||_{L^p(\mathbb R^n,\mu)}}=L^p(\mathbb R^n,\mu)\eeq\label{densite3}
+\end{Lem}
+
+\begin{Pre}
+Grâce au lemme \ref{densite2}, on peut se concentrer sur les indicatrices d'ouverts de mesure finie ou de compact. Par le lemme d'Urysohn \ref{ury}, il existe $f\in C_c(\mathbb R^n)$ tel que $K\prec f\prec V$. Par monotonie de l'intégrale de Lebesgue, on a dans le cas où $\mu^K+\epsilon^p\geq\mu(V)$ :
+\beq
+||\chi_K-f||_1, ||\chi_V-f||_1\leq \epsilon^p
+\eeq
+ce qui implique :
+\beq||\chi_K-f||_p, ||\chi_V-f||_1\leq \epsilon\eeq
+\qed\end{Pre}
+
+\begin{The} 
+Pour une mesure régulière et localement finie $\mu$, l'espace des fonctions continues à support compact et infiniment continument dérivable est dense dans $L^p(\mathbb R^n,\mu)$ :
+\beq \overline{C_c^\infty(\mathbb R^n)}^{||\cdot||_{L^p(\mathbb R^n,\mu)}}=L^p(\mathbb R^n,\mu)\eeq
+\label{densite_smooth}\end{The}
+
+\begin{Pre}
+Partir du lemme \ref{densite3}. Un compact dans $\mathbb R^n$ étant fermé et borné, il doit pour une fonction $f\in C_c(\mathbb R^n)$ y avoir $L>0$ tel que $\text{supp}(f)\subseteq[-L,L]^n$. La fonction étant uniformément continue sur ce dernier ensemble, il doit exister une fonction simple du type :
+\beq
+s=\sum_{l=1}^ms_l\chi_{d_n+[0,p[^n}
+\eeq
+telle que :
+\beq
+|f-s|<\frac{\epsilon}{\mu\left([-L,L]^n\right)^{1/p}}\implies||f-s||_p<p
+\eeq
+Finalement, pour un intervalle $[a,b[^n$, considérons les fonctions lisses du type $(f_n)=\left(\prod_{k=1}^mf_{m,k})\right)$ où $ m\in\mathbb N^*$ et 
+\beq
+f_{m,k}(x_k)=\chi_{]a-1/m,b[}(x_k)e^\frac1{m^2\left(x_k+1/m-a\right)\left(x_k-b\right)}
+\eeq
+Alors, $\lim_{m\to\infty}f_m(x)=\chi_{[a,b[^n}(x)$ simplement et chaque élément de la suite est intégrable. Par le théorème de la convergence dominée, la suite tend dans $L^p(\mathbb R^n)$ vers $\chi_{[a,b]^n}$.
+\qed\end{Pre}
+
+\begin{Cor}
+Si $\lambda$ est la mesure de Lebesgue, alors l'espace de Schwartz est dans $L^p(\mathbb R^n)$ :
+\beq \overline{\mathscr S(\mathbb R^n)}^{||\cdot||_{L^p(\mathbb R^n,\lambda)}}=L^p(\mathbb R^n,\lambda)\eeq
+\end{Cor}
+
+

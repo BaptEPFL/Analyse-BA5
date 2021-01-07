@@ -1,0 +1,191 @@
+\part{Opérateurs bornés}
+\begin{Def}
+Soient $X,Y$ des espaces vectoriels normés et soit $A\in\mathcal L(X,Y)$. La transposée $A^{T}\in\mathcal L(Y^*,X^*)$ de $A$ est définie par :
+\beq
+A^T(\eta)=\eta\circ A
+\eeq
+\end{Def}
+
+Noter $\Gamma$ l'application du théorème de Riesz-Fréchet l'isomorphisme anti-linéaire isométrique associant à chaque élément $x\in\mathcal H$ la fonctionnelle linéaire et continue de $\mathcal H'$ définie par $x^*(y)=\langle y,x\rangle$.
+
+\begin{Def}
+Soit $A\in\mathcal L(\mathcal H)$. L'adjoint de $A$ est défini par :
+\beq
+A^*=\Gamma^{-1}\circ A^T\circ \Gamma
+\eeq
+\end{Def}
+
+\section{Spectre des opérateurs bornés}
+
+L'ensemble des opérateurs de $\mathcal L(\mathcal H)$, dits Hilbertiens, qui sont inversibles est noté $\text{Inv}(\mathcal L(\mathcal H))$ ou $\text{Inv}(\mathcal H)$.
+
+\begin{The}
+$\text{Inv}(\mathcal L(\mathcal H))$ est un ouvert de $\mathcal L(\mathcal H)$.
+\label{invouvert}
+\end{The}
+\begpre
+Soient $A\in\text{Inv}(\mathcal H)$, $B\in B_{||A^{-1}||}(A)$. Alors $||BA^{-1}-1||\leq||B-1||||A^{-1}||<1$, c'est-à-dire $BA^{-1}\in\text{Inv}(\mathcal H)$ et à fortiori $B$ inversible.
+\qed\end{Pre}
+
+\begin{Lem}
+Si $A\in\mathcal L(\mathcal H)$, alors $\sigma(A)$ est fermé et sous-ensemble du disque centré à l'origine de $\mathbb C$ de rayon $||A||$.
+\label{rayleqnorm}\end{Lem}
+\begin{Pre}
+Supposer que $|\lambda|>||A||$, alors $||A\lambda^{-1}||<1$ et $1-\lambda^{-1}A\in\text{Inv}(\mathcal H)$. Par conséquent, $\lambda-A\in\text{Inv}(\mathcal H)$ et $\lambda\notin\sigma(A)$. Si $\lambda\notin\sigma(A)$ et $|\mu-\lambda|<||(A-\lambda)^{-1}||$, alors par le théorème \ref{invouvert}, $A-\mu\in\text{Inv}(\mathcal H)$. C'est-à-dire le complément spectre d'un opérateur est ouvert.
+\qed\end{Pre}
+
+\begin{Def}
+Le rayon spectral d'un opérateur $A\in\mathcal L(\mathcal H)$ est défini par 
+\beq
+r(A)=\sup\{||z||:z\in\sigma(A)\}
+\eeq
+\end{Def}
+
+\begin{The} Le spectre d'opérateurs bornés vérifie :
+\begin{enumerate}
+\item Si $U\in\mathcal L(\mathcal H)$ est unitaire, alors $\sigma(U)\subseteq \partial B_1(0)$.
+\item Si $A\in\mathcal L(\mathcal H)$ est auto-adjoint, alors $\sigma(A)\subseteq [-||A||,||A||]\subset R$ et $r(A)=||A||$.
+\item Si $B\in\mathcal L(\mathcal H)$ et $p$ est un polynômes à coefficients $(a_k)_{0\leq k\leq n}$ complexes, alors :
+\beq
+\sigma(p(B))=p(\sigma(B))
+\eeq
+\end{enumerate}
+\end{The}
+
+\begin{Pre}
+\begin{enumerate}
+\item Soit $\lambda\in\mathbb C$ tel que $|\lambda|>1$. Alors $U-\lambda=\lambda\left(\frac U\lambda-1\right)$ et $\left|\left|\frac U\lambda\right|\right|<1$. Donc l'inverse de $\left(\frac U\lambda-1\right)$ existe. Si $\lambda\in B_1(0)\backslash \{0\}$, on a en utilisant que $U^*$ est unitaire que $\lambda U^*<1$, que $U-\lambda=U(1-\lambda U^*)$ inversible. Si $\lambda=0$, $U-\lambda=U^*$.
+\item Le lemme \ref{rayleqnorm} assure $r(A)\leq||A||$. Supposer par l'absurde que ni $||A||$ ni $-||A||$ ne fasse partie du spectre. Dans ce cas, $(A+||A||)(A-||A||)=A^2-||A||^2\in\text{Inv}{\mathcal L(\mathcal H)}$. Il existe donc $B\in\mathcal L(\mathcal H)$ inverse de cet opérateur. De plus, 
+\beq
+(\cdot,\cdot):\mathcal H\times\mathcal H\to\mathbb C, (x,y)\mapsto \langle x,(||A||^2-A^2)y\rangle
+\eeq 
+est une application sesqui-linéaire positive donc vérifie Cauchy-Schwartz. Par définition de la norme, il existe une suite $(x_n)\in\mathcal H$ de vecteurs unitaires telle que $||A||=\lim_{n\to\infty}||Ax_n||$. Alors, en utilisant que $A$ est auto-adjoint :
+\beq\begin{split}
+1&=||x_n||^2=\langle (A^2-||A||^2)Bx_n,x_n\rangle=\left|\langle Bx_n,(||A||^2-A^2)x_n\rangle\right|\\&\leq \langle Bx_n,(||A||^2-A^2)Bx_n\rangle^{1/2}\langle x_n,(||A||^2-A^2)x_n\rangle^{1/2}\leq ||B||^{1/2}(||A||^2-||Ax_n||^2)^{1/2}
+\end{split}\eeq Ce qui est absurde. Ainsi, $||A||\in\sigma(A)$ ou $-||A||\in\sigma(A)$.
+\item Pour $\lambda\in\mathbb C$, $p(Z)-\lambda\in\mathbb C[Z]$. Par le théorème fondamental de l'algèbre, il existe $n$ nombres complexes tels que $p(Z)-\lambda=a\prod_{j=1}^n(Z-\lambda_j)$, $a\in\mathbb C$. Il suit :
+\beq
+\begin{split}
+\lambda\in\sigma(p(B))\Leftrightarrow\exists k:\lambda_k\in\sigma(B)\Leftrightarrow\exists \lambda_k\in\sigma(B):p(\lambda_k)-\lambda=0\Leftrightarrow\lambda\in p(\sigma(B))
+\end{split}
+\eeq
+\end{enumerate}
+\qed\end{Pre}
+
+\section{Le calcul fonctionnel}
+\begin{Def} Soit $A$ un opérateur borné auto-adjoint sur un espace de Hilbert et $f\in C(\sigma(A),\mathbb R)$. Définir :
+\beq
+f(A)=\lim_{n\to\infty} p_n(A)
+\eeq
+pour $(p_n)$ une suite de polynôme convergeant uniformément sur $\sigma(A)$ vers $f$.
+\label{conti}
+\end{Def}
+
+\begin{Prop} La définition \ref{conti} définit uniquement toutes les fonctions continues du spectre de $A$, borné et auto-adjoint, vers $\mathbb R$.
+\end{Prop}
+\begin{Pre}
+D'après le théorème de Stone-Weierstrass \ref{sw}, il existe une suite $(p_n)_{n\in\mathbb N}$ de polynômes à coefficients réels qui converge uniformément sur $\sigma(A)$ vers $f$. Poser la suite $(p_n(A))_{n\in\mathbb N}$ d'opérateurs auto-adjoints dans $\mathcal L(\mathcal H)$. Puisque $\sigma(p_n(A))=p_n(\sigma(A))$ :
+\beq
+||p_n(A)||_{\mathcal L(\mathcal H)}=r(p_n(A))=\sup\{||\lambda||:\lambda\in\sigma(p_n(A))\}=\sup\{||\lambda||:\lambda\in p_n(\sigma(A))\}=||p_n||_{L^\infty(\sigma(A))}
+\eeq
+Par conséquence, puisque $(p_n)$ est de Cauchy pour $||\cdot||_{L^\infty(\sigma(A))}$, $(p_n(A))$ est de Cauchy pour $||\cdot||_{\mathcal L(\mathcal H)}$ et converge donc vers un élément dans ${\mathcal L(\mathcal H)}$, qui est par définition $f(A)$. Montrer que cette définition ne dépend pas de la suite de polynômes. Soit $(q_n)$ une autre suite de polynômes convergeant uniformément sur $\sigma(A)$ vers $f$. Alors :
+\beq
+|| f(A)-q_n(A)||\leq ||f(A)-p_n(A)||+ ||p_n(A)-q_n(A)||\leq ||f(A)-p_n(A)||+||p_n-f||_{L^\infty(\sigma(A))}+||q_n-f||_{L^\infty(\sigma(A))}
+\eeq d'où l'unicité de la définition.
+\qed\end{Pre}
+
+\begin{The} Soit $A\in\mathcal L(\mathcal H)$ un opérateur auto-adjoint. Il existe alors un unique $^*$-morphisme unitaire et isométrique $\Phi:C(\sigma(A))\to\mathcal L(\mathcal H)$ avec les propriétés suivantes :
+\begin{enumerate}
+\item $\Phi(x\mapsto1)=1$ et $\Phi(x\mapsto x)=A$
+\item $\forall f,g\in C(\sigma(A)), \lambda\in\mathbb C$:
+\beq
+\Phi(f+\lambda g)=\Phi(f)+\lambda\Phi(g), \Phi(fg)=\Phi(f)\Phi(g), \Phi(f)^*=\Phi\left(\overline f\right)
+\eeq
+\item $\forall f\in C(\sigma(A),\mathbb C)$, $||\Phi(f)||=||f||_{L^\infty(\sigma(A))}$
+\end{enumerate}
+\end{The}
+\begin{Pre}
+Prendre $\Phi(f)=f(A)$. Seul l'unicité demande une preuve explicite. Soit $\Psi$ un tel morphisme. Pour tout polynôme $p\in\mathbb C[\sigma(A)]$, $\Psi(p)=p(A)$. Comme ce morphisme est supposé isométrique et que l'ensemble des polynômes est dense dans $\{f(A):f\in C(\sigma(A))\}$ pour la norme opérateur, on peut conclure $\Psi(f)=f(A)$, $\forall f\in C(\sigma(A))$.
+\qed\end{Pre}
+
+\section{Décomposition Spectrale}
+\begin{The} Soient $\mathcal H$ un espace de Hilbert séparable et $A\in\mathcal L(\mathcal H)$ un opérateur auto-adjoint. Il existe alors une famille de vecteurs orthonormés $\{e_k:k\in K\}$, $|K|\leq|\mathbb N|$, telle que :
+\beq
+\mathcal H=\bigoplus_{k\in K}\overline{\{f(A)e_k:f\in C(\sigma(A))\}}
+\eeq\label{decomph}
+\end{The}
+\begpre Soit $(b_n)$ une famille orthonormée, complète et dénombrable de $\mathcal H$. Considérer :
+\beq
+H_0 = \overline{\{f(A)b_0:f\in C(\sigma(A))\}}
+\eeq
+Il est invariant par calcul fonctionnel et fermé. Définir $j_1=\min\{n\in\mathbb N^*:b_n\notin H_0\}$. Les $b_i$ d'indice plus petits sont clairement toujours dans $H_0$ et $(1-P_{H_0})b_{j_1}\neq0$. Normaliser cette composante orthogonale et lui appliquer le calcul fonctionnel pour définir :
+\beq
+H_1=\left\{f(A)\frac{(1-P_{H_0})b_{j_1}}{||(1-P_{H_0})b_{j_1}||}:f\in C(\sigma(A)))\right\}^{\perp \perp}
+\eeq
+Les deux espaces sont alors en somme direct et leur somme directe et un sous-espace vectoriel fermé de l'espace de Hilbert. Ils sont de plus invariants par calcul fonctionnel. Définir par récurrence $j_{n+1}=\min\{m\in\mathbb N^*, m\geq 1+j_n:b_m\notin \oplus_{k=0}^nH_k\}$ et 
+\beq
+H_{n+1}=\left\{f(A)\frac{(1-P_{\oplus_{k=0}^nH_k})b_{j_{n+1}}}{||(1-P_{\oplus_{k=0}^nH_k})b_{j_{n+1}}||}:f\in C(\sigma(A))||\right\}^{\perp \perp}
+\eeq
+C'est un sous-espace fermé de $\mathcal H$ contenant par construction tous ses éléments. Conclusion établie.
+\qed\end{Pre}
+
+\begin{The}\textbf{Décomposition spectrale des opérateurs auto-adjoints bornés} Soient $\mathcal H$ un espace de Hilbert séparable et $A\in\mathcal L(\mathcal H)$ un opérateur auto-adjoint. Il existe alors une famille d'indice $K$ de cardinalité au plus dénombrable, une famille de mesures boréliennes et régulières $\{\mu_k\}_{k\in K}$ sur $\sigma(A)$ et un isomorphime unitaire $V:\mathcal H\to\bigoplus_{k\in K}L^2(\sigma(A),\mu_k)$ tels que 
+\beq
+VAV^{-1}=M_x
+\eeq
+où $M_x$ est l'opérateur de multiplication par $x$ sur $\bigoplus_{k\in K}L^2(\sigma(A),\mu_k)$.
+\label{decompoborne}\end{The}
+\begpre
+Poursuivre avec les notations de la preuve du théorème \ref{decomph}. Remarquer que la fonctionnelle $\Phi_k:C(\sigma(A))\to\mathbb C$
+\beq
+f\mapsto\langle e_k,f(A)e_k\rangle
+\eeq
+est, pour $f$ positive, une fonctionnelle positive. D'après le théorème \ref{rk} et un résultat des exercices, il existe donc une mesure $\mu_k$ sur $\sigma(A)$ telle que 
+\beq
+\forall f\in C(\sigma(A)), \Phi_k(f)=\int_{\sigma(A)}fd\mu_k
+\eeq
+Si $f(A)e_k$, $g(A)e_k$ sont dans $H_k$, alors par le calcul fonctionnel et le théorème \ref{rk}, on a :
+\beq
+\langle f(A) e_k,g(A)e_k\rangle=\langle e_k,\overline{f(A)}g(A)e_k\rangle=\langle e_k,\overline{f}g (A)e_k\rangle=\int_{\sigma(A)}\overline fgd\mu_k
+\eeq
+Par construction de $H_k$, $x\in H_k$ si et seulement si il existe une suite $(f_n)_{n\in\mathbb N}\subset C(\sigma(A))$ telle que $\lim_{n}||x-f_n(A)e_k||=0$. La suite $(f_n(A))$ est donc une suite de Cauchy dans $H_k$ et on a 
+\beq
+||f_m(A)e_k-f_n(A)e_k||^2=\langle e_k,(\overline{f_m(A)-f_n(A)})(f_m(A)-f_n(A))e_k\rangle=||f_m-f_n||_{L^2(\sigma(A),\mu_k)}^2
+\eeq
+La suite converge donc également dans ${L^2(\sigma(A),\mu_k)}$ vers un élément $f_x\in{L^2(\sigma(A),\mu_k)}$. Manifestement, par continuité des normes $||f_x||_{L^2(\sigma(A),\mu_k)}^2=||x||_{H_k}^2$. L'application $H_k\to{L^2(\sigma(A),\mu_k)}, x\mapsto f_x$ est donc un isomorphisme unitaire. Puisque $H=\bigoplus H_k$, $x$ s'écrit de manière unique comme somme d'éléments $x_k$ de $H_k$. Par la discussion précédente, il existe pour chaque $k\in K$ un isomorphisme unitaire $V_k$ qui associe à $x_k$ une fonction $f_{x,k}\in L^2(\sigma(A),\mu_k)$. Poser :
+\beq
+V:H\to\bigoplus_{k\in K}L^2(\sigma(A),\mu_k)\hspace{0.5cm} x\mapsto\bigoplus_{k\in K}f_{x,k}
+\eeq
+%Remarquer alors que si $\oplus_{k\in K}x_k=x\in\mathcal H$ et si $\lim_n f_{n,k}(A)e_k=x_k$, alors par le calcul fonctionnel et la continuité de tous les opérateurs en question :
+%\beq\begin{split}
+%VAx=\osum_{k\in K}VAx_k=\oplus_{k\in K}VA\lim_n f_{n,k}(A)e_k=\oplus_{k\in K} V\lim_n (M_xf_{n,k})(A) e_k
+%\end{split}\eeq
+Montrer finalement que $VA=VM_x$. Par décomposition de $\mathcal H$ :
+\beq
+VAx=VA\bigoplus_{k\in K}x_k
+\eeq
+Par continuité de $A$ et de $V$ :
+\beq
+VAx=\bigoplus_{k\in K}VAx_k
+\eeq
+Par définition des $x_k$ et calcul fonctionnel :
+\beq
+VAx=\bigoplus_{k\in K}VA\lim_{n\to\infty}f_{n,k}(A)e_k
+\eeq
+Par continuité de $A$ :
+\beq
+VAx=\bigoplus_{k\in K}V\lim_{n\to\infty}M_xf_{n,k}(A)e_k
+\eeq
+Par continuité de $V$ :
+\beq
+VAx= \bigoplus_{k\in K} \lim_{n\to\infty}VM_xf_{n,k}(A)e_k
+\eeq
+Par définition de $V$ :
+\beq
+VAx= \bigoplus_{k\in K} \lim_{n\to\infty}M_xf_{n,k}
+\eeq
+Et finalement par continuité de $M_x$ et définitions de $V$ et $x$ :
+\beq
+VAx= \bigoplus_{k\in K} M_x\lim_{n\to\infty}f_{n,k}=M_xVx
+\eeq
+\qed\end{Pre}

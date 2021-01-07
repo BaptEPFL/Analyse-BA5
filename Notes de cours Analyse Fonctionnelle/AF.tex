@@ -14,6 +14,8 @@
 \usepackage{fancyhdr}
 \usepackage{amsfonts}
 \usepackage{comment}
+\usepackage{accents}
+\usepackage{mathrsfs}  
 
 \def\bra#1{\mathinner{\langle{#1}|}}
 \def\ket#1{\mathinner{|{#1}\rangle}}
@@ -42,7 +44,7 @@
 \def\tfor{{\textstyle{3\over 4}}}
 
 \newcommand{\inp}[2]{\langle{#1}|{#2}\rangle}
-\newcommand{\vev}[2]{\langle{#1}\rangle}
+\newcommand{\vev}[1]{\langle{#1}\rangle}
 \newcommand{\slas}[1]{\not\!{#1}}
 \def\ohalf{{\textstyle{1\over 2}}}
 \def\thalf{{\textstyle{3\over 2}}}
@@ -56,6 +58,7 @@
 \newcommand\im{\Im\mbox{m}}
 \newcommand{\beq}{\begin{equation}}
 \newcommand{\eeq}{\end{equation}}
+\newcommand{\Hcal}{\mathcal H}
 
 \pagestyle{fancy}
 \lhead{\scriptsize{ÉCOLE POLYTECHNIQUE FÉDÉRALE DE LAUSANNE\\
@@ -78,7 +81,7 @@ Baptiste CLAUDON}}
 \newcommand{\begpre}{\begin{Pre}}
 \newtheorem{Ex}{Exemple}
 \newtheorem{Post}{Postulat}
-\newtheorem{Cor}{Corrolaire}
+\newtheorem{Cor}{Corollaire}
 \newcommand{\begcor}{\begin{Cor}}
 \newtheorem{Lem}{Lemme}
 
@@ -99,7 +102,12 @@ Baptiste CLAUDON}}
 \tableofcontents\newpage
 \newpage
 \input{espaces_fonctionnels}
+\newpage
 \input{mesures_integrales}
+\newpage
+\input{operateurs_bornes}
+\newpage
+\input{operateurs_nonbornes}
 
 \end{document}
 

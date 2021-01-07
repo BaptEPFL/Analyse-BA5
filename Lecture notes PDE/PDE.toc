@@ -1,9 +1,0 @@
-\babel@toc {english}{}
-\tocdepth@munge 
-\contentsline {section}{\numberline {}Contents}{2}{}
-\tocdepth@restore 
-\contentsline {section}{\numberline {I}Definition and Classification of PDE}{3}{}
-\contentsline {subsection}{\numberline {A}Notation and definitions}{3}{}
-\contentsline {subsection}{\numberline {B}Linear Second Order PDE}{3}{}
-\appendix 
-\contentsline {section}{\numberline {A}Gauss-Green formulae and integration by parts}{4}{}
