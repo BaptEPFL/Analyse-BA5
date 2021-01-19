@@ -25,7 +25,7 @@ D(A^*)=\{y\in\mathcal H:\exists!z_y\in\mathcal H:\forall x\in D(A), \langle y,Ax
 \eeq
 Définir l'action de l'adjoint par $y\mapsto z_y$. 
 \end{Def}
-\begin{Def} Un opérateur densément défini est dit auto-adjoint si son graphe est égal à celui de son opérateur.
+\begin{Def} Un opérateur densément défini est dit auto-adjoint si son graphe est égal à celui de son opérateur adjoint.
 \end{Def}
 \begin{Def} Un opérateur $A$ densément défini est dit normal si son domaine de définition est égal à celui de son adjoint et si pour chaque élément $x\in D(A)$, $||A^*x||=||Ax||$. 
 \end{Def}
@@ -64,7 +64,7 @@ Conclure en passant au supremum pour $\xi\in B_r(0)$.
 \qed\end{Pre}
 
 \begin{Def}
-Une famille $\mathcal F\in\mathcal L(X,Y)$ est simplement bornée si pour tout $x\in X$, $\sup\{||Ax||:A\in\mathcal F\}<\infty$ ou uniformément bornée sur $\sup\{||A||\in\mathcal F\}<\infty$.
+Une famille $\mathcal F\in\mathcal L(X,Y)$ est simplement bornée si pour tout $x\in X$, $\sup\{||Ax||:A\in\mathcal F\}<\infty$ ou uniformément bornée si $\sup\{||A||:A\in\mathcal F\}<\infty$.
 \end{Def}
 
 \begin{The}\textbf{Théorème de Banach-Steinhaus}
@@ -89,7 +89,7 @@ ce qui contredit la majoration simple.
 \label{bolzano}\end{The}
 
 \begin{Pre}
-Soient $(x_n)\subset \overline{B_1(0)}$ et $(e_n)$ un système ortho-normé et complet de $\mathcal H$. Alors, pour tout $m\in\mathbb N$, la suite $(\langle x_n,e_m)_{n\in\mathbb N}$ est une suite bornée de $\mathbb C$. Pour $m=1$, on peut choisir une sous-suite $(x_{n_k})_{k\in\mathbb N}$ qui converge vers un élément de l'espace de Hilbert dénoté par $z_1$. Poser $y_1$, d'indice $N_1,$ la premier élément de la sous-suite tel que pour tous les $k\geq N_1$, $|\langle x_{n_k},e_1\rangle|<1$. Répéter le processus pour chaque $m$ de manière à avoir une distance plus petite que $1/2^{m-1}$. Par itération, on construit une sous-suite $(y_m)$ de $(x_n)$ et une suite $(z_n)\subset \mathbb C$ telles que :
+Soient $(x_n)\subset \overline{B_1(0)}$ et $(e_n)$ un système ortho-normé et complet de $\mathcal H$. Alors, pour tout $m\in\mathbb N$, la suite $(\langle x_n,e_m\rangle)_{n\in\mathbb N}$ est une suite bornée de $\mathbb C$. Pour $m=1$, on peut choisir une sous-suite $(x_{n_k})_{k\in\mathbb N}$ qui converge vers un élément de l'espace de Hilbert dénoté par $z_1$. Poser $y_1$, d'indice $N_1,$ la premier élément de la sous-suite tel que pour tous les $k\geq N_1$, $|\langle x_{n_k},e_1\rangle|<1$. Répéter le processus pour chaque $m$ de manière à avoir une distance plus petite que $1/2^{m-1}$. Par itération, on construit une sous-suite $(y_m)$ de $(x_n)$ et une suite $(z_n)\subset \mathbb C$ telles que :
 \beq
 \forall k\in\mathbb N:\lim_{m\to\infty}\langle y_m,e_k\rangle=z_k
 \eeq
@@ -104,6 +104,11 @@ L'application $\text{Vect}\left(e_i\right)\to\mathbb C$, $v\mapsto\lim_{m\to\inf
 \begin{Lem}
 Soit $(D(T),T)$ un opérateur fermé et densément défini. Alors $D(T^*)$ est dense.
 \label{densitedomainead}\end{Lem}
+
+\begin{Pre}
+Il suffit de montrer que $x\perp D(T^*)$ implique $x=0$. $x$ est orthogonal au domaine de l'adjoint si et seulement si $(x,0)$ est orthogonal au graphe de l'adjoint, si et seulement si il est orthogonal à ${G(-A)^t}^\perp$ c'est-à-dire $x\in {{G(-A)^t}^\perp}^\perp=G(-A)^t$ car le graphe est fermé donc $(0,x)\in G(-A)$ : $x=-A0=0$.
+\qed\end{Pre}
+
 \begin{Lem} Soit $(D(T),T)$ un opérateur fermé sur un espace de Hilbert séparable $\mathcal H$ avec $D(T)=\mathcal H$. Alors $D(T^*)=\mathcal H$.
 \end{Lem}
 

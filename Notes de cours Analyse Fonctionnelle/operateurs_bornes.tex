@@ -44,7 +44,7 @@ r(A)=\sup\{||z||:z\in\sigma(A)\}
 \begin{The} Le spectre d'opérateurs bornés vérifie :
 \begin{enumerate}
 \item Si $U\in\mathcal L(\mathcal H)$ est unitaire, alors $\sigma(U)\subseteq \partial B_1(0)$.
-\item Si $A\in\mathcal L(\mathcal H)$ est auto-adjoint, alors $\sigma(A)\subseteq [-||A||,||A||]\subset R$ et $r(A)=||A||$.
+\item Si $A\in\mathcal L(\mathcal H)$ est auto-adjoint, alors $\sigma(A)\subseteq [-||A||,||A||]\subset \mathbb R$ et $r(A)=||A||$.
 \item Si $B\in\mathcal L(\mathcal H)$ et $p$ est un polynômes à coefficients $(a_k)_{0\leq k\leq n}$ complexes, alors :
 \beq
 \sigma(p(B))=p(\sigma(B))
@@ -55,7 +55,7 @@ r(A)=\sup\{||z||:z\in\sigma(A)\}
 \begin{Pre}
 \begin{enumerate}
 \item Soit $\lambda\in\mathbb C$ tel que $|\lambda|>1$. Alors $U-\lambda=\lambda\left(\frac U\lambda-1\right)$ et $\left|\left|\frac U\lambda\right|\right|<1$. Donc l'inverse de $\left(\frac U\lambda-1\right)$ existe. Si $\lambda\in B_1(0)\backslash \{0\}$, on a en utilisant que $U^*$ est unitaire que $\lambda U^*<1$, que $U-\lambda=U(1-\lambda U^*)$ inversible. Si $\lambda=0$, $U-\lambda=U^*$.
-\item Le lemme \ref{rayleqnorm} assure $r(A)\leq||A||$. Supposer par l'absurde que ni $||A||$ ni $-||A||$ ne fasse partie du spectre. Dans ce cas, $(A+||A||)(A-||A||)=A^2-||A||^2\in\text{Inv}{\mathcal L(\mathcal H)}$. Il existe donc $B\in\mathcal L(\mathcal H)$ inverse de cet opérateur. De plus, 
+\item Le lemme \ref{rayleqnorm} assure $r(A)\leq||A||$. Montrer désormais que le spectre est réel. En effet, l'opérateur $\exp(iA)$ est unitaire. En utilisant le premier résultat, on conclut que le spectre est réel. Ensuite, supposer par l'absurde que ni $||A||$ ni $-||A||$ ne fasse partie du spectre. Dans ce cas, $(A+||A||)(A-||A||)=A^2-||A||^2\in\text{Inv}{\mathcal L(\mathcal H)}$. Il existe donc $B\in\mathcal L(\mathcal H)$ inverse de cet opérateur. De plus, 
 \beq
 (\cdot,\cdot):\mathcal H\times\mathcal H\to\mathbb C, (x,y)\mapsto \langle x,(||A||^2-A^2)y\rangle
 \eeq 
